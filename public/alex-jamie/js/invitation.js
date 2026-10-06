@@ -22,13 +22,13 @@
       <img class="envelope" src="${data.media.openingPoster ? text(safeURL(data.media.openingPoster)) : asset('envelope-first.webp')}" alt="" fetchpriority="high" style="display: none;">
       <img class="envelope envelope-end" id="envelope-end" data-src="${asset('envelope-last.webp')}" alt="" hidden>
       <button class="open-invitation" id="open" aria-label="Open the wedding invitation" style="z-index: 10;"><span class="open-caption">Open your invitation<small>${text(data.couple.first)} &amp; ${text(data.couple.second)}</small></span></button>
-      <video class="opening-video" id="opening-video" muted playsinline preload="auto" src="/alex-jamie/videointrodesign2.mp4#t=0.001" style="object-fit: cover; width: 100%; height: 100%; position: absolute; z-index: 0;"></video>
+      <video class="opening-video" id="opening-video" muted playsinline preload="auto" src="/alex-jamie/videointrodesign2.mp4?v=2#t=0.001" style="object-fit: cover; width: 100%; height: 100%; position: absolute; z-index: 0;"></video>
       <button class="skip-opening" id="skip" hidden>Skip opening</button>
     </div>
     <main class="invitation" id="invitation" inert>
       <section class="hero" aria-label="Wedding invitation">
         <img class="hero-art" src="${data.media.heroPoster ? text(safeURL(data.media.heroPoster)) : asset('hero-first.webp')}" alt="" decoding="async" style="display: none;">
-        <video class="hero-video" id="hero-video" muted loop autoplay playsinline preload="none" src="/alex-jamie/heroautoplay.mp4" style="object-fit: cover; width: 100%; height: 100%; position: absolute; z-index: 0;"></video>
+        <video class="hero-video" id="hero-video" muted autoplay playsinline preload="none" src="/alex-jamie/heroautoplay.mp4?v=2" style="object-fit: cover; width: 100%; height: 100%; position: absolute; z-index: 0;"></video>
         <div class="hero-copy" style="z-index: 10;"><p class="occasion">The wedding of</p><p class="date">${text(data.wedding.dateLabel)}</p>
           <h1 class="names" id="names" tabindex="-1"><span>${text(data.couple.first)}</span><i>&amp;</i><span>${text(data.couple.second)}</span></h1>
           <p class="hero-note">${text(data.couple.heroNote)}</p><a class="hero-link" href="#our-invitation">With love, you are invited</a>
@@ -56,7 +56,7 @@
       <footer class="closing" aria-labelledby="closing-title" style="position: relative; overflow: hidden;">
         <div class="closing-scene">
           <img class="closing-art" src="${data.media.heroPoster ? text(safeURL(data.media.heroPoster)) : asset('hero-first.webp')}" alt="" width="720" height="1280" loading="lazy" decoding="async" style="display: none;">
-          <video class="closing-video" muted loop autoplay playsinline src="/alex-jamie/heroautoplay.mp4" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 0;"></video>
+          <video class="closing-video" muted loop autoplay playsinline src="/alex-jamie/heroautoplay.mp4?v=2" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 0;"></video>
           <div class="closing-copy reveal" style="position: relative; z-index: 10;">
             <p class="closing-eyebrow">The beginning of our forever</p>
             <h2 class="closing-title" id="closing-title">With all<br><em>our love</em></h2>
@@ -82,7 +82,7 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const hero = $('hero-video'), opening = $('opening-video'), audio = $('audio');
   let musicAttempted = false;
-  let opened = false, openingTimer, fadeTimer, statusTimer, observersStarted = false;
+  let opened = false, openingTimer, fadeTimer, statusTimer, heroLoopTimer, observersStarted = false;
   let motionPaused = reduced.matches;
   const ambience = window.initInvitationMotion({theme:data.theme,reduced});
   function syncMotion() {
@@ -93,13 +93,18 @@
     $('motion').textContent=reduced.matches ? 'Reduced motion' : (motionPaused ? 'Play motion' : 'Pause motion');
     $('motion').setAttribute('aria-pressed',String(stopped));
     hero.hidden=stopped || !source('heroVideo');
-    if(stopped || !opened) hero.pause();
-    else if(source('heroVideo')) hero.play().catch(()=>{hero.hidden=true;});
+    if(stopped || !opened) {
+      clearTimeout(heroLoopTimer);
+      hero.pause();
+    } else if(source('heroVideo')) {
+      clearTimeout(heroLoopTimer);
+      hero.play().catch(()=>{hero.hidden=true;});
+    }
   }
   const notify = message => { $('status').textContent = message; $('status').hidden=false; clearTimeout(statusTimer); statusTimer=setTimeout(()=>$('status').hidden=true,4500); };
   const source = name => data.media[name] ? safeURL(data.media[name]) : '';
-  if (source('openingVideo')) { opening.src=source('openingVideo') + '#t=0.001'; opening.poster=source('openingPoster') || ''; opening.preload='auto'; }
-  if (source('heroVideo')) { hero.src=source('heroVideo'); hero.poster=source('heroPoster') || asset('hero-first.webp'); }
+  if (source('openingVideo')) { opening.src=source('openingVideo') + '?v=2#t=0.001'; opening.poster=source('openingPoster') || ''; opening.preload='auto'; }
+  if (source('heroVideo')) { hero.src=source('heroVideo') + '?v=2'; hero.poster=source('heroPoster') || asset('hero-first.webp'); }
   if (source('music')) { audio.src=source('music'); audio.volume=.45; }
   audio.addEventListener('error',()=>{ $('music').textContent='Play music'; $('music').setAttribute('aria-pressed','false'); if(opened) notify('Music could not be loaded. You can still enjoy the invitation.'); });
   const mapsURL = data.venue.mapsUrl ? safeURL(data.venue.mapsUrl) : '';
@@ -150,8 +155,18 @@
   opening.addEventListener('ended',finishOpening);
   opening.addEventListener('error',()=>{if(opened)finishOpening();});
   opening.addEventListener('timeupdate',()=>{if(Number.isFinite(opening.duration)&&opening.currentTime>=opening.duration-.8)finishOpening();});
+  hero.addEventListener('ended', () => {
+    clearTimeout(heroLoopTimer);
+    heroLoopTimer = setTimeout(() => {
+      const stopped = motionPaused || reduced.matches;
+      if (!stopped && opened) {
+        hero.currentTime = 0;
+        hero.play().catch(() => {});
+      }
+    }, 10000);
+  });
   hero.addEventListener('error',()=>{hero.hidden=true;});
-  $('reopen').addEventListener('click',()=>{clearTimeout(fadeTimer);clearTimeout(openingTimer);window.scrollTo({top:0,behavior:'instant'});opened=false;ambience.setPaused(true);opening.pause();opening.currentTime=0;opening.hidden=true;hero.pause();hero.currentTime=0;$('entrance').hidden=false;$('entrance').classList.remove('leaving','opening');$('open').disabled=false;$('skip').hidden=true;$('invitation').inert=true;$('media-controls').hidden=true;document.body.classList.add('locked');$('open').focus();});
+  $('reopen').addEventListener('click',()=>{clearTimeout(fadeTimer);clearTimeout(openingTimer);clearTimeout(heroLoopTimer);window.scrollTo({top:0,behavior:'instant'});opened=false;ambience.setPaused(true);opening.pause();opening.currentTime=0;opening.hidden=true;hero.pause();hero.currentTime=0;$('entrance').hidden=false;$('entrance').classList.remove('leaving','opening');$('open').disabled=false;$('skip').hidden=true;$('invitation').inert=true;$('media-controls').hidden=true;document.body.classList.add('locked');$('open').focus();});
   $('music').addEventListener('click',async()=>{if(audio.paused){try{await audio.play();$('music').textContent='Pause music';$('music').setAttribute('aria-pressed','true');}catch{notify('Music could not be played. Please try again.');}}else{audio.pause();$('music').textContent='Play music';$('music').setAttribute('aria-pressed','false');}});
   $('motion').addEventListener('click',()=>{if(reduced.matches)return;motionPaused=!motionPaused;syncMotion();});
   reduced.addEventListener('change',event=>{motionPaused=event.matches;if(event.matches && opened)finishOpening();syncMotion();});
