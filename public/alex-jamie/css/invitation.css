@@ -95,7 +95,7 @@ body{font-size:20px;line-height:1.65}.names{font-size:clamp(64px,15vw,88px);line
 .closing>.motion-decor{display:none}
 .theme-petrol-dahlia .closing-rsvp{border-radius:2px}
 .theme-cinnamon-camellia .closing-rsvp{border-radius:8px}
-@media(max-width:480px){.closing-scene{padding:40px 24px 120px;min-height:100svh;justify-content:flex-start}.closing-title{font-size:51px}.closing .closing-eyebrow{font-size:10px;letter-spacing:.14em}.closing .closing-names{font-size:38px}}
+@media(max-width:480px){.closing-scene{padding:40px 24px 100px;min-height:auto;justify-content:flex-start}.closing-title{font-size:51px}.closing .closing-eyebrow{font-size:10px;letter-spacing:.14em}.closing .closing-names{font-size:38px}}
 @media(max-width:340px){.closing-scene{padding-left:26px;padding-right:26px}.closing-title{font-size:46px}.closing .closing-names{font-size:33px}}
 
 .closing .music-credit{flex-basis:100%;text-align:center;font-size:12px;line-height:1.7;margin:20px auto 0;color:var(--closing-line)}
