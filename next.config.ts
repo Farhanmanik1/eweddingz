@@ -7,6 +7,14 @@ const nextConfig: NextConfig = {
         source: '/akash-selina',
         destination: '/akash-selina/index.html',
       },
+      {
+        source: '/sahil-geet',
+        destination: '/sahil-geet/index.html',
+      },
+      {
+        source: '/alex-jamie',
+        destination: '/alex-jamie/index.html',
+      }
     ]
   },
 };
