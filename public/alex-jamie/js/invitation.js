@@ -22,7 +22,7 @@
       <img class="envelope" src="${data.media.openingPoster ? text(safeURL(data.media.openingPoster)) : asset('envelope-first.webp')}" alt="" fetchpriority="high" style="display: none;">
       <img class="envelope envelope-end" id="envelope-end" data-src="${asset('envelope-last.webp')}" alt="" hidden>
       <button class="open-invitation" id="open" aria-label="Open the wedding invitation" style="z-index: 10;"><span class="open-caption">Open your invitation<small>${text(data.couple.first)} &amp; ${text(data.couple.second)}</small></span></button>
-      <video class="opening-video" id="opening-video" muted playsinline loop autoplay src="/alex-jamie/videointrodesign2.mp4" style="object-fit: cover; width: 100%; height: 100%; position: absolute; z-index: 0;"></video>
+      <video class="opening-video" id="opening-video" muted playsinline preload="auto" src="/alex-jamie/videointrodesign2.mp4" style="object-fit: cover; width: 100%; height: 100%; position: absolute; z-index: 0;"></video>
       <button class="skip-opening" id="skip" hidden>Skip opening</button>
     </div>
     <main class="invitation" id="invitation" inert>
@@ -131,6 +131,7 @@
   }
   async function openInvitation() {
     if(opened)return;opened=true;$('open').disabled=true;
+    $('entrance').classList.add('opening');
     if(source('heroVideo') && !reduced.matches) { hero.preload='auto'; hero.load(); }
     if(source('music')) {
       $('media-controls').hidden=false; $('music').hidden=false;
@@ -142,7 +143,7 @@
       openingTimer=setTimeout(finishOpening,20000);
       try{await opening.play();}catch{finishOpening();}
     }else if(reduced.matches){finishOpening();}
-    else{const end=$('envelope-end');end.src=end.dataset.src;end.hidden=false;$('entrance').classList.add('opening');openingTimer=setTimeout(finishOpening,1800);}
+    else{const end=$('envelope-end');end.src=end.dataset.src;end.hidden=false;openingTimer=setTimeout(finishOpening,1800);}
   }
   $('open').addEventListener('click',openInvitation);
   $('skip').addEventListener('click',finishOpening);
