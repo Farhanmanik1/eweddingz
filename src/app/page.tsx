@@ -943,7 +943,7 @@ export default function Home() {
                   className={`p-filter-btn ${portfolioFilter === 'all' ? 'active' : ''}`}
                   onClick={() => setPortfolioFilter('all')}
                 >
-                  ✦ All Creations (7)
+                  ✦ All Creations (8)
                 </button>
                 <button
                   className={`p-filter-btn ${portfolioFilter === 'website' ? 'active' : ''}`}
@@ -1097,6 +1097,25 @@ export default function Home() {
                     clientName: "Sahil & Geet (Lake Como)",
                     deliverables: ["Custom Domain Web Link (eweddingz.online)", "Modern Interactive UI", "Digital Envelope Reveal", "Mobile-Optimized Design"],
                     whatsappMessage: "Hi eWeddingz! I love the Sahil & Geet Modern Minimalist Website style (₹999). Can you share details for our wedding?"
+                  },
+                  {
+                    id: "p8",
+                    category: "website" as const,
+                    badge: "FLORAL WEDDING INVITATION · LIVE DEMO",
+                    price: "₹999",
+                    couple: "Alex & Jamie",
+                    tradition: "✦ Classic & Botanical",
+                    venue: "Sunlit Sandstone Courtyard",
+                    date: "Sep 27, 2026",
+                    mockupType: "browser" as const,
+                    urlPreview: "eweddingz.online/alex-jamie",
+                    liveDemoUrl: "/alex-jamie",
+                    image: "https://images.unsplash.com/photo-1542042161784-26ab9e041e89?auto=format&fit=crop&q=80&w=1200",
+                    tags: ["Golden Camellia", "Floral Envelope", "Classic Elegance"],
+                    quote: "The Golden Camellia design perfectly captured the elegant botanical vibe of our courtyard wedding.",
+                    clientName: "Alex & Jamie",
+                    deliverables: ["Custom Domain Web Link (eweddingz.online)", "Animated Envelope Opening", "Botanical Themed UI", "RSVP Form"],
+                    whatsappMessage: "Hi eWeddingz! I love the Alex & Jamie Golden Camellia style (₹999). Can you share details for our wedding?"
                   }
                 ];
 
