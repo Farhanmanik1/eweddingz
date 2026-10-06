@@ -943,7 +943,7 @@ export default function Home() {
                   className={`p-filter-btn ${portfolioFilter === 'all' ? 'active' : ''}`}
                   onClick={() => setPortfolioFilter('all')}
                 >
-                  ✦ All Creations (6)
+                  ✦ All Creations (7)
                 </button>
                 <button
                   className={`p-filter-btn ${portfolioFilter === 'website' ? 'active' : ''}`}
@@ -1078,6 +1078,25 @@ export default function Home() {
                     clientName: "Arjun & Meera (Jaipur)",
                     deliverables: ["Custom Palace Monogram", "Interactive RSVP Link", "High-Res Formats", "2 Free Revision Rounds"],
                     whatsappMessage: "Hi eWeddingz! I'm looking for a Royal Digital Invitation (₹299) like Arjun & Meera's Jaipur suite."
+                  },
+                  {
+                    id: "p7",
+                    category: "website" as const,
+                    badge: "MODERN MINIMALIST WEBSITE · LIVE DEMO",
+                    price: "₹999",
+                    couple: "Sahil & Geet",
+                    tradition: "✦ Modern & Elegant Celebration",
+                    venue: "Villa Balbiano, Lake Como, Italy",
+                    date: "Aug 24, 2027",
+                    mockupType: "browser" as const,
+                    urlPreview: "eweddingz.online/sahil-geet",
+                    liveDemoUrl: "/sahil-geet",
+                    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=1200",
+                    tags: ["Champagne & Espresso", "Interactive Save The Date", "Destination Wedding"],
+                    quote: "The Champagne & Espresso aesthetic was perfectly elegant for our Lake Como wedding. The modern digital envelope reveal completely wowed our friends.",
+                    clientName: "Sahil & Geet (Lake Como)",
+                    deliverables: ["Custom Domain Web Link (eweddingz.online)", "Modern Interactive UI", "Digital Envelope Reveal", "Mobile-Optimized Design"],
+                    whatsappMessage: "Hi eWeddingz! I love the Sahil & Geet Modern Minimalist Website style (₹999). Can you share details for our wedding?"
                   }
                 ];
 
