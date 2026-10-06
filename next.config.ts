@@ -18,6 +18,26 @@ const nextConfig: NextConfig = {
       {
         source: '/cristianweb',
         destination: '/cristianweb/index.html',
+      },
+      {
+        source: '/',
+        has: [
+          {
+            type: 'host',
+            value: 'cristianweb.eweddingz.online',
+          },
+        ],
+        destination: '/cristianweb/index.html',
+      },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'cristianweb.eweddingz.online',
+          },
+        ],
+        destination: '/cristianweb/:path*',
       }
     ]
   },
