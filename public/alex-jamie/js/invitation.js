@@ -4,7 +4,7 @@
   const theme = window.INVITATION_THEMES[data.theme];
   const root = document.documentElement;
   ['paper','ink','accent'].forEach(key => root.style.setProperty(`--${key}`, theme[key]));
-  const asset = name => `./assets/${name.replace(/\.(png|jpe?g)$/, '.webp')}`;
+  const asset = name => `data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=`;
   const assetUrl = name => {
     try { return new URL(asset(name), location.href).href; } catch { return asset(name); }
   };

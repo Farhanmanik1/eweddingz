@@ -59,12 +59,12 @@ window.WEDDING_DATA = {
     "deadline": ""
   },
   "media": {
-    "openingVideo": "./videointrodesign2.mp4",
-    "openingPoster": "./media/opening-poster.webp",
-    "heroVideo": "./videointrodesign2.mp4",
-    "heroPoster": "./media/hero-poster.webp",
-    "music": "./media/music.mp3",
-    "musicTitle": "Heartwarming",
+    "openingVideo": "/alex-jamie/videointrodesign2.mp4",
+    "openingPoster": "",
+    "heroVideo": "/alex-jamie/videointrodesign2.mp4",
+    "heroPoster": "",
+    "music": "",
+    "musicTitle": "",
     "musicSource": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100207"
   }
 };
