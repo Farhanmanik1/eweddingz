@@ -86,11 +86,11 @@ body{font-size:20px;line-height:1.65}.names{font-size:clamp(64px,15vw,88px);line
 .closing-rsvp:hover{opacity:.9;transform:translateY(-2px)}
 .closing-rsvp:active{transform:translateY(0)}
 .closing .closing-caption{position:absolute;bottom:26px;left:25px;right:25px;margin:0;font-size:13px;font-style:italic;text-shadow:none}
-.closing-colophon{position:relative;padding:10px 25px 100px;background:var(--closing-ground);border-top:0}
-.closing .reopen{color:var(--ink);margin:0;padding:10px 0;min-height:44px;border-color:color-mix(in srgb,var(--closing-line) 50%,transparent);font-size:14px}
-.closing .reopen span{margin-left:12px}
-.closing .dearly-signature{color:var(--ink);font-size:40px;margin-top:29px}
-.closing .dearly-signature small{font-size:10px;letter-spacing:.2em;color:var(--closing-line)}
+.closing-colophon{position:relative;padding:25px 25px 80px;background:var(--closing-ground);border-top:0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+.closing .reopen{color:var(--ink);margin:0;padding:5px 0;border:none;background:transparent;font-size:13px;cursor:pointer}
+.closing .reopen span{margin-left:8px}
+.closing .dearly-signature{color:var(--ink);font-size:32px;margin:0;line-height:1}
+.closing .dearly-signature small{font-size:9px;letter-spacing:.15em;color:var(--closing-line);margin-top:6px}
 .closing a:focus-visible,.closing button:focus-visible{outline-color:var(--ink)}
 .closing>.motion-decor{display:none}
 .theme-petrol-dahlia .closing-rsvp{border-radius:2px}
@@ -98,7 +98,7 @@ body{font-size:20px;line-height:1.65}.names{font-size:clamp(64px,15vw,88px);line
 @media(max-width:480px){.closing-scene{padding:60px 24px 150px;min-height:100svh}.closing-title{font-size:51px}.closing .closing-eyebrow{font-size:10px;letter-spacing:.14em}.closing .closing-names{font-size:38px}}
 @media(max-width:340px){.closing-scene{padding-left:26px;padding-right:26px}.closing-title{font-size:46px}.closing .closing-names{font-size:33px}}
 
-.closing .music-credit{font-size:12px;line-height:1.7;margin:26px auto 0;max-width:280px;color:var(--closing-line)}
+.closing .music-credit{flex-basis:100%;text-align:center;font-size:12px;line-height:1.7;margin:20px auto 0;color:var(--closing-line)}
 .music-credit a{text-underline-offset:3px}.media-controls{max-width:calc(100vw - 24px);flex-wrap:wrap;justify-content:flex-end}
 /* Keep the sound control reachable while the opening film is still on screen. */
 .locked .media-controls{z-index:101}
