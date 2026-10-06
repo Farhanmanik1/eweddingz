@@ -1116,6 +1116,25 @@ export default function Home() {
                     clientName: "Alex & Jamie",
                     deliverables: ["Custom Domain Web Link (eweddingz.online)", "Animated Envelope Opening", "Botanical Themed UI", "RSVP Form"],
                     whatsappMessage: "Hi eWeddingz! I love the Alex & Jamie Golden Camellia style (₹999). Can you share details for our wedding?"
+                  },
+                  {
+                    id: "p9",
+                    category: "website" as const,
+                    badge: "CATHOLIC MATRIMONY · LIVE DEMO",
+                    price: "₹999",
+                    couple: "Akash & Selina",
+                    tradition: "✦ Catholic Wedding",
+                    venue: "Holy Matrimony",
+                    date: "Custom Date",
+                    mockupType: "browser" as const,
+                    urlPreview: "eweddingz.online/cristianweb/",
+                    liveDemoUrl: "/cristianweb/",
+                    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=1200",
+                    tags: ["Catholic Theme", "Holy Matrimony", "Elegant Design"],
+                    quote: "A beautiful digital experience for our Catholic ceremony.",
+                    clientName: "Akash & Selina",
+                    deliverables: ["Custom Domain Web Link (eweddingz.online)", "Catholic Theme", "RSVP Form"],
+                    whatsappMessage: "Hi eWeddingz! I love the Akash & Selina Catholic theme (₹999). Can you share details for our wedding?"
                   }
                 ];
 

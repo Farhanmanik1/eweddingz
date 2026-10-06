@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akash & Selina — Wedding Celebration | 2nd December 2026</title>
+    <meta name="description" content="Join us in celebrating the holy matrimony of Akash Samal and Selina Majhi on December 2nd, 2026 at Bethel Chapel Assembly, Jatani, Khordha, Odisha.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+    <link rel="stylesheet" href="/cristianweb/style.css?v=1.1">
+</head>
+<body>
+
+    <!-- Background Wedding Song -->
+    <audio id="wedding-audio" src="/cristianweb/bgsong.mp3" preload="auto" loop playsinline></audio>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-envelope" id="preloader-envelope">
+            <div class="envelope-back"></div>
+            <div class="envelope-content">
+                <p class="preloader-text" style="font-size: 32px; color: #D4A853; font-family: 'Alex Brush', cursive; margin:0;">Akash <span>&</span> Selina</p>
+                <p style="color:var(--text-muted); font-size:12px; margin-top:15px; font-family: 'Montserrat', sans-serif; letter-spacing: 3px; text-transform: uppercase;">You're Invited</p>
+            </div>
+
+            <!-- SVG Flaps for beautiful gold borders -->
+            <svg class="envelope-flaps-svg" viewBox="0 0 400 260" preserveAspectRatio="none" style="position:absolute; inset:0; width:100%; height:100%; z-index:3; pointer-events:none;">
+                <path d="M 0 0 L 200 140 L 0 260 Z" fill="#1f1f1f" stroke="rgba(212, 168, 83, 0.4)" stroke-width="2"/>
+                <path d="M 400 0 L 200 140 L 400 260 Z" fill="#1f1f1f" stroke="rgba(212, 168, 83, 0.4)" stroke-width="2"/>
+                <path d="M 0 260 L 200 140 L 400 260 Z" fill="#242424" stroke="rgba(212, 168, 83, 0.6)" stroke-width="2"/>
+            </svg>
+
+            <!-- Top Flap -->
+            <svg class="envelope-flap top" id="envelope-flap-top" viewBox="0 0 400 260" preserveAspectRatio="none" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:5; transform-origin:top; pointer-events:none;">
+                <path d="M 0 0 L 200 140 L 400 0 Z" fill="#2a2a2a" stroke="#D4A853" stroke-width="2"/>
+            </svg>
+
+            <div class="preloader-action" id="preloader-action" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); z-index:6; opacity:1; pointer-events:auto;">
+                <button class="wax-seal-btn" id="preloader-enter-btn" type="button" aria-label="Open wedding invitation with music">
+                    <span class="seal-text">OPEN</span>
+                </button>
+            </div>
+        </div>
+        <p class="preloader-hint" style="position:absolute; bottom: 40px; width:100%; text-align: center; color: rgba(255,255,255,0.6); font-family: 'EB Garamond', serif; font-style: italic;">Tap the wax seal to open & celebrate 🎵</p>
+    </div>
+
+    <!-- Floating Particles Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="main-nav">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">A <span class="nav-amp">&</span> S</a>
+            <div class="nav-right">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <svg class="theme-icon theme-icon-dark" viewBox="0 0 24 24" width="20" height="20">
+                        <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <svg class="theme-icon theme-icon-light" viewBox="0 0 24 24" width="20" height="20">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#ceremony">Ceremony</a></li>
+                <li><a href="#countdown">The Day</a></li>
+                <li><a href="#verse">Blessings</a></li>
+                <li><a href="#rsvp">RSVP</a></li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-stained-glass">
+            <svg viewBox="0 0 400 700" class="stained-glass-svg" preserveAspectRatio="xMidYMid slice">
+                <!-- Gothic arch window -->
+                <defs>
+                    <radialGradient id="glassGlow" cx="50%" cy="30%" r="60%">
+                        <stop offset="0%" stop-color="rgba(240, 212, 138, 0.4)"/>
+                        <stop offset="100%" stop-color="rgba(140, 70, 50, 0.1)"/>
+                    </radialGradient>
+                    <filter id="softGlow">
+                        <feGaussianBlur stdDeviation="3" result="blur"/>
+                        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                    </filter>
+                </defs>
+                <path d="M40,700 L40,250 Q40,80 200,40 Q360,80 360,250 L360,700 Z" 
+                      fill="none" stroke="rgba(212,168,83,0.3)" stroke-width="2" class="arch-outline"/>
+                <path d="M60,680 L60,260 Q60,100 200,65 Q340,100 340,260 L340,680 Z" 
+                      fill="url(#glassGlow)" class="arch-fill"/>
+                <!-- Cross in window -->
+                <line x1="200" y1="120" x2="200" y2="350" stroke="rgba(212,168,83,0.5)" stroke-width="3"/>
+                <line x1="140" y1="200" x2="260" y2="200" stroke="rgba(212,168,83,0.5)" stroke-width="3"/>
+                <!-- Light rays -->
+                <line x1="200" y1="200" x2="80" y2="500" stroke="rgba(240,212,138,0.08)" stroke-width="30" class="light-ray"/>
+                <line x1="200" y1="200" x2="200" y2="550" stroke="rgba(240,212,138,0.06)" stroke-width="40" class="light-ray"/>
+                <line x1="200" y1="200" x2="320" y2="500" stroke="rgba(240,212,138,0.08)" stroke-width="30" class="light-ray"/>
+            </svg>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-top-ornament">
+                <svg viewBox="0 0 200 40" class="ornament-svg">
+                    <path d="M0,20 Q50,0 100,20 Q150,40 200,20" stroke="rgba(212,168,83,0.6)" fill="none" stroke-width="1.5"/>
+                    <circle cx="100" cy="20" r="4" fill="#D4A853"/>
+                    <circle cx="60" cy="12" r="2" fill="rgba(212,168,83,0.5)"/>
+                    <circle cx="140" cy="28" r="2" fill="rgba(212,168,83,0.5)"/>
+                </svg>
+            </div>
+            <p class="hero-subtitle" id="hero-subtitle">Together with our families</p>
+            <h1 class="hero-names">
+                <span class="name groom-name" id="groom-name">Akash</span>
+                <span class="hero-and">&</span>
+                <span class="name bride-name" id="bride-name">Selina</span>
+            </h1>
+            <p class="hero-tagline" id="hero-tagline">Request the pleasure of your company at the celebration of our Holy Matrimony</p>
+            <div class="hero-date-badge" id="hero-date-badge">
+                <div class="badge-line"></div>
+                <span>December 2, 2026</span>
+                <div class="badge-line"></div>
+            </div>
+            <div class="hero-bottom-ornament">
+                <svg viewBox="0 0 200 40" class="ornament-svg">
+                    <path d="M0,20 Q50,40 100,20 Q150,0 200,20" stroke="rgba(212,168,83,0.6)" fill="none" stroke-width="1.5"/>
+                    <circle cx="100" cy="20" r="4" fill="#D4A853"/>
+                </svg>
+            </div>
+            <a href="#ceremony" class="hero-scroll-btn" id="hero-scroll-btn">
+                <span>Scroll to explore</span>
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                    <path d="M12 4v16m0 0l-6-6m6 6l6-6" stroke="#D4A853" stroke-width="2" fill="none" stroke-linecap="round"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Floating rose petals -->
+        <div class="petals-container" id="petals-container"></div>
+    </section>
+
+    <!-- Monogram Divider -->
+    <div class="section-divider">
+        <svg viewBox="0 0 400 100" class="divider-svg">
+            <line x1="0" y1="50" x2="160" y2="50" stroke="rgba(212,168,83,0.4)" stroke-width="1"/>
+            <circle cx="200" cy="50" r="25" stroke="#D4A853" stroke-width="1.5" fill="none"/>
+            <text x="200" y="58" text-anchor="middle" fill="#D4A853" font-family="'Alex Brush', cursive" font-size="28" letter-spacing="3">A S</text>
+            <line x1="240" y1="50" x2="400" y2="50" stroke="rgba(212,168,83,0.4)" stroke-width="1"/>
+        </svg>
+    </div>
+
+    <!-- Our Story Section -->
+    <section id="story">
+        <div class="story-bg-pattern"></div>
+        <div class="container">
+            <div class="section-header" data-animate="section">
+                <span class="section-label">Our Journey</span>
+                <h2 class="section-title">Our Love Story</h2>
+                <svg viewBox="0 0 120 20" class="section-ornament">
+                    <line x1="0" y1="10" x2="45" y2="10" stroke="#D4A853" stroke-width="1"/>
+                    <circle cx="60" cy="10" r="5" stroke="#D4A853" stroke-width="1" fill="none"/>
+                    <circle cx="60" cy="10" r="2" fill="#D4A853"/>
+                    <line x1="75" y1="10" x2="120" y2="10" stroke="#D4A853" stroke-width="1"/>
+                </svg>
+            </div>
+
+            <div class="story-verse" data-animate="verse">
+                <svg viewBox="0 0 30 30" class="verse-cross" fill="none">
+                    <rect x="14" y="2" width="2" height="26" rx="1" fill="#D4A853"/>
+                    <rect x="7" y="10" width="16" height="2" rx="1" fill="#D4A853"/>
+                </svg>
+                <blockquote>
+                    "And now these three remain: faith, hope and love. But the greatest of these is love."
+                </blockquote>
+                <cite>— 1 Corinthians 13:13</cite>
+            </div>
+
+            <div class="story-timeline">
+                <div class="timeline-line"></div>
+                
+                <!-- 1st Milestone: Proposal -->
+                <div class="timeline-item" data-animate="timeline">
+                    <div class="timeline-dot">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#D4A853"/>
+                        </svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">1st Milestone</span>
+                        <h3>The Proposal</h3>
+                        <p>With a heart full of love and trust in the Lord's divine plan, a question was asked, joyful tears were shed, and a sacred promise was sealed — to walk together hand-in-hand in Christ's light forever.</p>
+                    </div>
+                </div>
+
+                <!-- 2nd Milestone: Engagement -->
+                <div class="timeline-item" data-animate="timeline">
+                    <div class="timeline-dot">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <circle cx="9" cy="12" r="6" stroke="#D4A853" stroke-width="2" fill="none"/>
+                            <circle cx="15" cy="12" r="6" stroke="#D4A853" stroke-width="2" fill="none"/>
+                            <circle cx="9" cy="7" r="1.5" fill="#D4A853"/>
+                        </svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2nd Milestone</span>
+                        <h3>The Engagement</h3>
+                        <p>Surrounded by our beloved families, pastoral prayers, and heartfelt blessings, our commitment was sanctified. Two families joined hearts as rings were exchanged in joyful anticipation of holy matrimony.</p>
+                    </div>
+                </div>
+
+                <!-- 3rd Milestone: Holy Wedding -->
+                <div class="timeline-item" data-animate="timeline">
+                    <div class="timeline-dot">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#D4A853"/>
+                        </svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">3rd Milestone • 2nd December 2026</span>
+                        <h3>The Holy Wedding</h3>
+                        <p>The sacred day we stand before God at Bethel Chapel, pledging our holy vows to love, honor, and cherish each other as husband and wife for all eternity. We joyfully invite you to celebrate with us!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ceremony Section -->
+    <section id="ceremony">
+        <div class="ceremony-bg"></div>
+        <div class="container">
+            <div class="section-header" data-animate="section">
+                <span class="section-label">Holy Matrimony</span>
+                <h2 class="section-title">The Ceremony</h2>
+                <svg viewBox="0 0 120 20" class="section-ornament">
+                    <line x1="0" y1="10" x2="45" y2="10" stroke="#D4A853" stroke-width="1"/>
+                    <circle cx="60" cy="10" r="5" stroke="#D4A853" stroke-width="1" fill="none"/>
+                    <circle cx="60" cy="10" r="2" fill="#D4A853"/>
+                    <line x1="75" y1="10" x2="120" y2="10" stroke="#D4A853" stroke-width="1"/>
+                </svg>
+            </div>
+
+            <div class="ceremony-cards">
+                <!-- Card 1: Holy Matrimony -->
+                <div class="ceremony-card" data-animate="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 80 100" class="church-icon">
+                            <path d="M40 5L40 25" stroke="#D4A853" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M30 15L50 15" stroke="#D4A853" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M10 55L40 25L70 55" stroke="#D4A853" stroke-width="2" fill="none"/>
+                            <rect x="10" y="55" width="60" height="40" rx="2" stroke="#D4A853" stroke-width="2" fill="none"/>
+                            <path d="M30 95L30 70Q30 65 40 65Q50 65 50 70L50 95" stroke="#D4A853" stroke-width="2" fill="none"/>
+                            <circle cx="40" cy="45" r="8" stroke="#D4A853" stroke-width="1.5" fill="none"/>
+                            <path d="M40 39L40 51M34 45L46 45" stroke="#D4A853" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <span class="card-tag">Holy Matrimony</span>
+                    <h3>The Wedding Ceremony</h3>
+                    <div class="card-detail">
+                        <svg viewBox="0 0 24 24" width="18" height="18">
+                            <rect x="3" y="4" width="18" height="18" rx="2" stroke="#D4A853" stroke-width="2" fill="none"/>
+                            <line x1="16" y1="2" x2="16" y2="6" stroke="#D4A853" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="8" y1="2" x2="8" y2="6" stroke="#D4A853" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="3" y1="10" x2="21" y2="10" stroke="#D4A853" stroke-width="2"/>
+                        </svg>
+                        <span>Wednesday, December 2, 2026</span>
+                    </div>
+                    <div class="card-detail">
+                        <svg viewBox="0 0 24 24" width="18" height="18">
+                            <circle cx="12" cy="12" r="9" stroke="#D4A853" stroke-width="2" fill="none"/>
+                            <path d="M12 7v5l3 3" stroke="#D4A853" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        </svg>
+                        <span>3:00 PM</span>
+                    </div>
+                    <div class="card-detail">
+                        <svg viewBox="0 0 24 24" width="18" height="18">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="#D4A853" stroke-width="2" fill="none"/>
+                            <circle cx="12" cy="10" r="3" stroke="#D4A853" stroke-width="2" fill="none"/>
+                        </svg>
+                        <span>Bethel Chapel Assembly Jatni</span>
+                    </div>
+                    <p class="card-address">Bethel Chapel, Jatani, Khordha, Odisha – 752050</p>
+                    <a href="https://maps.app.goo.gl/kcfwS2JydzcUm4aQ7?g_st=aw" target="_blank" rel="noopener noreferrer" class="card-map-btn">
+                        <svg viewBox="0 0 24 24" width="16" height="16">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                        Get Directions
+                    </a>
+                </div>
+
+                <!-- Card 2: Wedding Reception -->
+                <div class="ceremony-card" data-animate="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 80 80" class="reception-icon">
+                            <ellipse cx="40" cy="65" rx="35" ry="10" stroke="#D4A853" stroke-width="2" fill="none"/>
+                            <path d="M10 65L15 30Q15 25 40 20Q65 25 65 30L70 65" stroke="#D4A853" stroke-width="2" fill="none"/>
+                            <circle cx="40" cy="15" r="8" stroke="#D4A853" stroke-width="1.5" fill="none"/>
+                            <path d="M40 9L40 21M34 15L46 15" stroke="#D4A853" stroke-width="1.5"/>
+                            <path d="M25 40Q40 35 55 40" stroke="#D4A853" stroke-width="1" fill="none"/>
+                            <path d="M25 50Q40 45 55 50" stroke="#D4A853" stroke-width="1" fill="none"/>
+                        </svg>
+                    </div>
+                    <span class="card-tag">Celebration</span>
+                    <h3>Wedding Reception</h3>
+                    <div class="card-detail">
+                        <svg viewBox="0 0 24 24" width="18" height="18">
+                            <rect x="3" y="4" width="18" height="18" rx="2" stroke="#D4A853" stroke-width="2" fill="none"/>
+                            <line x1="16" y1="2" x2="16" y2="6" stroke="#D4A853" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="8" y1="2" x2="8" y2="6" stroke="#D4A853" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="3" y1="10" x2="21" y2="10" stroke="#D4A853" stroke-width="2"/>
+                        </svg>
+                        <span>Friday, December 4, 2026</span>
+                    </div>
+                    <div class="card-detail">
+                        <svg viewBox="0 0 24 24" width="18" height="18">
+                            <circle cx="12" cy="12" r="9" stroke="#D4A853" stroke-width="2" fill="none"/>
+                            <path d="M12 7v5l3 3" stroke="#D4A853" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        </svg>
+                        <span>7:00 PM Onwards</span>
+                    </div>
+                    <div class="card-detail">
+                        <svg viewBox="0 0 24 24" width="18" height="18">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="#D4A853" stroke-width="2" fill="none"/>
+                            <circle cx="12" cy="10" r="3" stroke="#D4A853" stroke-width="2" fill="none"/>
+                        </svg>
+                        <span>Our residence</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wedding Rings Divider -->
+    <div class="rings-divider" data-animate="rings">
+        <div class="rings-scene">
+            <!-- Decorative line left -->
+            <div class="rings-line rings-line-left"></div>
+
+            <svg class="rings-svg" viewBox="0 0 260 110" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- Gold gradient for left ring -->
+                    <linearGradient id="goldGradL" x1="20%" y1="0%" x2="80%" y2="100%">
+                        <stop offset="0%"   stop-color="#fef1a6"/>
+                        <stop offset="25%"  stop-color="#d4af37"/>
+                        <stop offset="50%"  stop-color="#8a5a19"/>
+                        <stop offset="75%"  stop-color="#e6c25a"/>
+                        <stop offset="100%" stop-color="#b5852a"/>
+                    </linearGradient>
+                    <!-- Gold gradient for right ring -->
+                    <linearGradient id="goldGradR" x1="80%" y1="0%" x2="20%" y2="100%">
+                        <stop offset="0%"   stop-color="#fef1a6"/>
+                        <stop offset="25%"  stop-color="#d4af37"/>
+                        <stop offset="50%"  stop-color="#8a5a19"/>
+                        <stop offset="75%"  stop-color="#e6c25a"/>
+                        <stop offset="100%" stop-color="#b5852a"/>
+                    </linearGradient>
+                    <!-- Diamond gradient -->
+                    <linearGradient id="diamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%"   stop-color="#ffffff"/>
+                        <stop offset="50%"  stop-color="#e0f0ff"/>
+                        <stop offset="100%" stop-color="#b0d0f0"/>
+                    </linearGradient>
+                    <!-- Glow filters -->
+                    <filter id="ringGlow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
+                        <feComponentTransfer in="blur" result="glow">
+                            <feFuncA type="linear" slope="0.6"/>
+                        </feComponentTransfer>
+                        <feMerge>
+                            <feMergeNode in="glow"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                    <filter id="diamGlow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+                        <feMerge>
+                            <feMergeNode in="blur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                    <!-- Interlock clip path to make left ring overlap right ring at bottom -->
+                    <clipPath id="interlockClip">
+                        <rect x="80" y="55" width="50" height="50" />
+                    </clipPath>
+                </defs>
+
+                <!-- ═══ LEFT RING (Base) ═══ -->
+                <g class="ring-left" filter="url(#ringGlow)">
+                    <!-- Outer thick band -->
+                    <circle cx="106" cy="55" r="26" fill="none" stroke="#7a4f14" stroke-width="15"/>
+                    <circle cx="106" cy="55" r="26" fill="none" stroke="url(#goldGradL)" stroke-width="13"/>
+                    <!-- Inner & Outer edge highlights for 3D bevel -->
+                    <circle cx="106" cy="55" r="19.5" fill="none" stroke="#fef1a6" stroke-width="1" opacity="0.7"/>
+                    <circle cx="106" cy="55" r="32.5" fill="none" stroke="#fef1a6" stroke-width="1" opacity="0.5"/>
+                    <!-- Top highlight arc (shine) -->
+                    <path d="M 81 40 A 26 26 0 0 1 131 40" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+                </g>
+
+                <!-- ═══ RIGHT RING (Overlaps Left) ═══ -->
+                <g class="ring-right" filter="url(#ringGlow)">
+                    <!-- Outer thick band -->
+                    <circle cx="154" cy="55" r="26" fill="none" stroke="#7a4f14" stroke-width="15"/>
+                    <circle cx="154" cy="55" r="26" fill="none" stroke="url(#goldGradR)" stroke-width="13"/>
+                    <!-- Inner & Outer edge highlights for 3D bevel -->
+                    <circle cx="154" cy="55" r="19.5" fill="none" stroke="#fef1a6" stroke-width="1" opacity="0.7"/>
+                    <circle cx="154" cy="55" r="32.5" fill="none" stroke="#fef1a6" stroke-width="1" opacity="0.5"/>
+                    <!-- Top highlight arc (shine) -->
+                    <path d="M 129 40 A 26 26 0 0 1 179 40" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+
+                    <!-- ♦ Diamond setting on bride's ring ♦ -->
+                    <ellipse cx="154" cy="20" rx="7" ry="4" fill="#d4af37"/>
+                    <!-- Diamond gem (Brilliant cut shape) -->
+                    <polygon points="154,8 160,11 161,16 157,21 151,21 147,16 148,11" fill="url(#diamondGrad)" stroke="#ffffff" stroke-width="0.8" filter="url(#diamGlow)" class="ring-diamond"/>
+                    <!-- Diamond facets -->
+                    <line x1="154" y1="8" x2="154" y2="21" stroke="white" stroke-width="0.5" opacity="0.7"/>
+                    <line x1="147" y1="16" x2="161" y2="16" stroke="white" stroke-width="0.5" opacity="0.6"/>
+                    <line x1="148" y1="11" x2="157" y2="21" stroke="white" stroke-width="0.5" opacity="0.5"/>
+                    <line x1="160" y1="11" x2="151" y2="21" stroke="white" stroke-width="0.5" opacity="0.5"/>
+                    <!-- Main sparkle star on diamond -->
+                    <line x1="154" y1="2" x2="154" y2="16" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" class="ring-sparkle-star"/>
+                    <line x1="147" y1="9" x2="161" y2="9" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" class="ring-sparkle-star"/>
+                </g>
+
+                <!-- ═══ LEFT RING (Interlock - Draws bottom right quadrant over Right Ring) ═══ -->
+                <g class="ring-left-interlock" clip-path="url(#interlockClip)">
+                    <circle cx="106" cy="55" r="26" fill="none" stroke="#7a4f14" stroke-width="15"/>
+                    <circle cx="106" cy="55" r="26" fill="none" stroke="url(#goldGradL)" stroke-width="13"/>
+                    <circle cx="106" cy="55" r="19.5" fill="none" stroke="#fef1a6" stroke-width="1" opacity="0.7"/>
+                    <circle cx="106" cy="55" r="32.5" fill="none" stroke="#fef1a6" stroke-width="1" opacity="0.5"/>
+                </g>
+
+                <!-- Floating sparkle dots around the rings -->
+                <circle cx="65" cy="35" r="2" fill="#ffffff" class="ring-sparkle" filter="url(#diamGlow)"/>
+                <circle cx="85" cy="22" r="1.5" fill="#fef1a6" class="ring-sparkle"/>
+                <circle cx="130" cy="18" r="1.5" fill="#ffffff" class="ring-sparkle" filter="url(#diamGlow)"/>
+                <circle cx="175" cy="22" r="1.5" fill="#fef1a6" class="ring-sparkle"/>
+                <circle cx="195" cy="35" r="2" fill="#ffffff" class="ring-sparkle" filter="url(#diamGlow)"/>
+            </svg>
+
+            <!-- Decorative line right -->
+            <div class="rings-line rings-line-right"></div>
+        </div>
+    </div>
+
+    <!-- Music Toggle -->
+    <div class="music-toggle-wrap" id="music-toggle-wrap">
+        <button class="music-toggle" id="music-toggle" aria-label="Toggle ambient wedding music">
+            <svg class="music-icon music-off" viewBox="0 0 24 24" width="18" height="18">
+                <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+            <svg class="music-icon music-on" viewBox="0 0 24 24" width="18" height="18" style="display:none">
+                <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="2" fill="currentColor" opacity="0.3"/>
+                <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="2" fill="currentColor" opacity="0.3"/>
+                <!-- Sound waves -->
+                <path d="M22 8c1 1.5 1 3.5 0 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <path d="M24 6c2 3 2 7 0 10" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+        </button>
+
+    </div>
+    <!-- Countdown Section -->
+    <section id="countdown">
+        <div class="countdown-bg-overlay"></div>
+        <div class="countdown-pattern"></div>
+        <div class="container">
+            <div class="section-header" data-animate="section">
+                <span class="section-label">Save the Date</span>
+                <h2 class="section-title">Counting Down</h2>
+                <svg viewBox="0 0 120 20" class="section-ornament">
+                    <line x1="0" y1="10" x2="45" y2="10" stroke="#D4A853" stroke-width="1"/>
+                    <circle cx="60" cy="10" r="5" stroke="#D4A853" stroke-width="1" fill="none"/>
+                    <circle cx="60" cy="10" r="2" fill="#D4A853"/>
+                    <line x1="75" y1="10" x2="120" y2="10" stroke="#D4A853" stroke-width="1"/>
+                </svg>
+            </div>
+
+            <div class="countdown-grid" id="countdown-timer">
+                <div class="countdown-box" data-animate="count">
+                    <div class="countdown-ring">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="54" stroke="rgba(212,168,83,0.15)" stroke-width="2" fill="none"/>
+                            <circle cx="60" cy="60" r="54" stroke="#D4A853" stroke-width="2" fill="none" 
+                                    stroke-dasharray="339.29" stroke-dashoffset="339.29" class="ring-progress" data-unit="days"/>
+                        </svg>
+                    </div>
+                    <span class="countdown-number" id="days">000</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-box" data-animate="count">
+                    <div class="countdown-ring">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="54" stroke="rgba(212,168,83,0.15)" stroke-width="2" fill="none"/>
+                            <circle cx="60" cy="60" r="54" stroke="#D4A853" stroke-width="2" fill="none" 
+                                    stroke-dasharray="339.29" stroke-dashoffset="339.29" class="ring-progress" data-unit="hours"/>
+                        </svg>
+                    </div>
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-box" data-animate="count">
+                    <div class="countdown-ring">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="54" stroke="rgba(212,168,83,0.15)" stroke-width="2" fill="none"/>
+                            <circle cx="60" cy="60" r="54" stroke="#D4A853" stroke-width="2" fill="none" 
+                                    stroke-dasharray="339.29" stroke-dashoffset="339.29" class="ring-progress" data-unit="minutes"/>
+                        </svg>
+                    </div>
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-box" data-animate="count">
+                    <div class="countdown-ring">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="54" stroke="rgba(212,168,83,0.15)" stroke-width="2" fill="none"/>
+                            <circle cx="60" cy="60" r="54" stroke="#D4A853" stroke-width="2" fill="none" 
+                                    stroke-dasharray="339.29" stroke-dashoffset="339.29" class="ring-progress" data-unit="seconds"/>
+                        </svg>
+                    </div>
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+
+            <!-- Add to Calendar -->
+            <div class="calendar-actions" data-animate="calendar">
+                <div class="calendar-dropdown-wrap">
+                    <button class="calendar-btn" id="add-to-calendar" aria-expanded="false" aria-haspopup="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18">
+                            <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                            <line x1="12" y1="14" x2="12" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="10" y1="16" x2="14" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <span>Add to Calendar</span>
+                        <svg class="calendar-chevron" viewBox="0 0 24 24" width="14" height="14">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="calendar-menu" id="calendar-menu" aria-hidden="true">
+                        <a href="#" class="calendar-menu-item" id="cal-google" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z" fill="currentColor"/>
+                            </svg>
+                            <span>Google Calendar</span>
+                        </a>
+                        <button type="button" class="calendar-menu-item" id="cal-ics">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                            </svg>
+                            <span>Apple Calendar / Outlook (.ics)</span>
+                        </button>
+                        <button type="button" class="calendar-menu-item" id="cal-copy">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="2" fill="none"/>
+                            </svg>
+                            <span>Copy Event Details</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bible Verse / Blessings Section -->
+    <section id="verse">
+        <div class="verse-bg"></div>
+        <div class="container">
+            <div class="verse-card" data-animate="verse-card">
+                <div class="verse-glow"></div>
+                <svg viewBox="0 0 60 80" class="verse-cross-icon">
+                    <rect x="24" y="5" width="12" height="70" rx="2" fill="rgba(212,168,83,0.15)"/>
+                    <rect x="5" y="22" width="50" height="12" rx="2" fill="rgba(212,168,83,0.15)"/>
+                    <rect x="25" y="6" width="10" height="68" rx="2" fill="none" stroke="#D4A853" stroke-width="1"/>
+                    <rect x="6" y="23" width="48" height="10" rx="2" fill="none" stroke="#D4A853" stroke-width="1"/>
+                </svg>
+                <div class="verse-content">
+                    <span class="verse-label">A Prayer for the Couple</span>
+                    <blockquote class="verse-text">
+                        "Love is patient, love is kind. It does not envy, it does not boast, it is not proud. It does not dishonor others, it is not self-seeking, it is not easily angered, it keeps no record of wrongs. Love does not delight in evil but rejoices with the truth. It always protects, always trusts, always hopes, always perseveres."
+                    </blockquote>
+                    <cite class="verse-cite">— 1 Corinthians 13:4-7</cite>
+                </div>
+                <div class="verse-rosary">
+                    <span class="rosary-bead"></span>
+                    <span class="rosary-bead"></span>
+                    <span class="rosary-bead"></span>
+                    <span class="rosary-bead"></span>
+                    <span class="rosary-bead"></span>
+                </div>
+            </div>
+
+            <div class="blessings-grid" data-animate="blessings">
+                <div class="blessing-item">
+                    <div class="blessing-icon">🕊️</div>
+                    <h4>Peace</h4>
+                    <p>May your home be filled with the peace of Christ</p>
+                </div>
+                <div class="blessing-item">
+                    <div class="blessing-icon">❤️</div>
+                    <h4>Love</h4>
+                    <p>May your love grow deeper with each passing day</p>
+                </div>
+                <div class="blessing-item">
+                    <div class="blessing-icon">✨</div>
+                    <h4>Joy</h4>
+                    <p>May God's joy be your strength in all seasons</p>
+                </div>
+                <div class="blessing-item">
+                    <div class="blessing-icon">🙏</div>
+                    <h4>Faith</h4>
+                    <p>May faith be the foundation of your union</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Teaser -->
+    <section id="gallery">
+        <div class="container">
+            <div class="section-header" data-animate="section">
+                <span class="section-label">Moments</span>
+                <h2 class="section-title">Our Gallery</h2>
+                <svg viewBox="0 0 120 20" class="section-ornament">
+                    <line x1="0" y1="10" x2="45" y2="10" stroke="#D4A853" stroke-width="1"/>
+                    <circle cx="60" cy="10" r="5" stroke="#D4A853" stroke-width="1" fill="none"/>
+                    <circle cx="60" cy="10" r="2" fill="#D4A853"/>
+                    <line x1="75" y1="10" x2="120" y2="10" stroke="#D4A853" stroke-width="1"/>
+                </svg>
+            </div>
+            <div class="gallery-grid" data-animate="gallery">
+                <div class="gallery-item gallery-large" data-gallery-id="1" data-image="engagement.jpeg" data-title="Engagement Promise" data-desc="Akash & Selina celebrating their sacred commitment in the presence of family and Christ.">
+                    <img src="/cristianweb/engagement.jpeg" alt="Engagement Promise" class="gallery-photo" style="object-position: center 25%;">
+                    <div class="gallery-zoom-badge">
+                        <svg viewBox="0 0 24 24" width="14" height="14">
+                            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <line x1="21" y1="21" x2="16" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="11" y1="8" x2="11" y2="14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="8" y1="11" x2="14" y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <span>View</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery-id="2" data-image="prewedding.jpeg" data-title="Pre-Wedding Devotion" data-desc="A journey guided by prayer, laughter, and trust in the Almighty's plan.">
+                    <img src="/cristianweb/prewedding.jpeg" alt="Pre-Wedding Devotion" class="gallery-photo" style="object-position: center 20%;">
+                    <div class="gallery-zoom-badge">
+                        <svg viewBox="0 0 24 24" width="14" height="14">
+                            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <line x1="21" y1="21" x2="16" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <span>View</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery-id="3" data-image="together.jpeg" data-title="Together in Faith" data-desc="United by God's infinite grace to build a Christian home rooted in love.">
+                    <img src="/cristianweb/together.jpeg" alt="Together in Faith" class="gallery-photo" style="object-position: center 15%;">
+                    <div class="gallery-zoom-badge">
+                        <svg viewBox="0 0 24 24" width="14" height="14">
+                            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <line x1="21" y1="21" x2="16" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <span>View</span>
+                    </div>
+                </div>
+                <div class="gallery-item gallery-large" data-gallery-id="4" data-image="blessed.jpeg" data-title="Blessed Union" data-desc="Celebrating each moment as a precious gift from the Lord.">
+                    <img src="/cristianweb/blessed.jpeg" alt="Blessed Union" class="gallery-photo" style="object-position: center 65%;">
+                    <div class="gallery-zoom-badge">
+                        <svg viewBox="0 0 24 24" width="14" height="14">
+                            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <line x1="21" y1="21" x2="16" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <span>View</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="rsvp-section section">
+        <div class="container rsvp-container">
+            <h2 class="section-title">RSVP</h2>
+            <div class="title-ornament">
+                <svg viewBox="0 0 100 20" width="80" height="20">
+                    <line x1="0" y1="10" x2="35" y2="10" stroke="#D4A853" stroke-width="1.5"/>
+                    <circle cx="50" cy="10" r="4" fill="#D4A853"/>
+                    <line x1="65" y1="10" x2="100" y2="10" stroke="#D4A853" stroke-width="1.5"/>
+                </svg>
+            </div>
+            <p class="section-desc" style="max-width: 600px; margin: 0 auto 40px;">Please let us know if you can make it to celebrate with us. You can reach out directly via call or message.</p>
+            
+            <div class="rsvp-contact">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="#D4A853" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="contact-name">Mr Dhruba Charan Samal</h3>
+                    <a href="tel:+919938115611" class="contact-number">+91 99381 15611</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-ornament">
+            <svg viewBox="0 0 300 60" class="footer-ornament-svg">
+                <line x1="0" y1="30" x2="110" y2="30" stroke="rgba(212,168,83,0.3)" stroke-width="1"/>
+                <path d="M140,10 L160,30 L140,50 L120,30 Z" stroke="#D4A853" stroke-width="1.5" fill="none"/>
+                <text x="140" y="35" text-anchor="middle" fill="#D4A853" font-family="Great Vibes" font-size="18">♱</text>
+                <line x1="180" y1="30" x2="300" y2="30" stroke="rgba(212,168,83,0.3)" stroke-width="1"/>
+            </svg>
+        </div>
+        <div class="footer-names">
+            <span class="footer-groom">Akash</span>
+            <span class="footer-amp">&</span>
+            <span class="footer-bride">Selina</span>
+        </div>
+        <p class="footer-date">December 2, 2026 • Bethel Chapel Assembly, Jatani</p>
+        <p class="footer-verse">"What therefore God hath joined together, let not man put asunder." — Mark 10:9</p>
+        <p class="footer-credit">Made with ❤️ and Prayer</p>
+    </footer>
+
+    <!-- Back to top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+            <path d="M12 19V5M5 12l7-7 7 7" stroke="#D4A853" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <!-- Floating Blessings Button -->
+    <button class="floating-blessing-btn" id="floating-blessing-btn" aria-label="Send a prayer blessing for the couple">
+        <span class="blessing-heart-icon">💖</span>
+        <span class="blessing-btn-text">Send Blessing</span>
+    </button>
+
+    <!-- Gallery Lightbox Modal -->
+    <div class="gallery-lightbox" id="gallery-lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+        <div class="lightbox-dialog">
+            <button class="lightbox-close" id="lightbox-close" aria-label="Close photo preview">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                    <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <div class="lightbox-card">
+                <div class="lightbox-frame">
+                    <div class="lightbox-illustration" id="lightbox-illustration">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+                <div class="lightbox-caption">
+                    <span class="lightbox-tag">Holy Matrimony Gallery</span>
+                    <h3 class="lightbox-title" id="lightbox-title">Engagement Promise</h3>
+                    <p class="lightbox-desc" id="lightbox-desc">Akash & Selina celebrating their sacred commitment in the presence of family and Christ.</p>
+                    <div class="lightbox-ornament">
+                        <svg viewBox="0 0 100 20" width="80" height="16">
+                            <line x1="0" y1="10" x2="35" y2="10" stroke="currentColor" stroke-width="1"/>
+                            <circle cx="50" cy="10" r="3" fill="currentColor"/>
+                            <line x1="65" y1="10" x2="100" y2="10" stroke="currentColor" stroke-width="1"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+    <script src="/cristianweb/script.js"></script>
+</body>
+</html>

@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
       {
         source: '/alex-jamie',
         destination: '/alex-jamie/index.html',
+      },
+      {
+        source: '/cristianweb',
+        destination: '/cristianweb/index.html',
       }
     ]
   },
