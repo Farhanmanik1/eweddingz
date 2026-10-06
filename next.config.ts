@@ -24,7 +24,7 @@ const nextConfig: NextConfig = {
         has: [
           {
             type: 'host',
-            value: 'cristianweb.eweddingz.online',
+            value: 'akash-selina.eweddingz.online',
           },
         ],
         destination: '/cristianweb/index.html',
@@ -34,7 +34,7 @@ const nextConfig: NextConfig = {
         has: [
           {
             type: 'host',
-            value: 'cristianweb.eweddingz.online',
+            value: 'akash-selina.eweddingz.online',
           },
         ],
         destination: '/cristianweb/:path*',
