@@ -72,16 +72,19 @@ body{font-size:20px;line-height:1.65}.names{font-size:clamp(64px,15vw,88px);line
 .closing-scene:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--paper) 0%,color-mix(in srgb,var(--paper) 80%,transparent) 10%,color-mix(in srgb,var(--paper) 25%,transparent) 28%,transparent 65%,var(--paper) 100%);pointer-events:none}
 .closing-copy{width:100%;max-width:350px;text-shadow:none}
 .closing p{letter-spacing:normal}
-.closing .closing-eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin:0 0 45px;color:var(--ink)}
-.closing-title{font:400 clamp(48px,12vw,66px)/1.2 "Cormorant Garamond",Georgia,serif;margin:0;letter-spacing:-.035em}
+.closing .closing-eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin:0 0 32px;color:var(--ink)}
+.closing-title{font:400 clamp(38px,10vw,52px)/1.04 "Cormorant Garamond",Georgia,serif;margin:0;letter-spacing:-.035em}
 .closing-title em{display:inline-block;font:400 1.12em/1.3 Parisienne,cursive;letter-spacing:0;padding:0 .12em .08em}
-.closing-rule{width:45px;height:1px;background:var(--closing-line);margin:40px auto 45px;opacity:.8}
-.closing .closing-names{font:400 clamp(43px,11vw,58px)/1.3 "Imperial Script",Parisienne,cursive;margin:0 auto 30px;overflow-wrap:anywhere;max-width:100%}
+.closing-rule{position:relative;width:6px;height:6px;background:var(--closing-line);margin:40px auto;transform:rotate(45deg);opacity:.6}
+.closing-rule:before,.closing-rule:after{content:'';position:absolute;width:40px;height:1px;background:var(--closing-line);top:2.5px}
+.closing-rule:before{right:12px;transform:rotate(-45deg)}
+.closing-rule:after{left:12px;transform:rotate(-45deg)}
+.closing .closing-names{font:400 clamp(50px,14vw,70px)/1.2 "Imperial Script",Parisienne,cursive;margin:0 auto 25px;overflow-wrap:anywhere;max-width:100%}
 .closing-names span{display:inline}.closing-names i{font:400 .6em/1 "Cormorant Garamond",serif;margin:0 .3em}
-.closing .closing-date{font-size:13px;letter-spacing:.18em;margin:0 0 40px;text-transform:uppercase}
-.closing .closing-note{font-size:18px;line-height:1.6;margin:45px 0 55px}
-.closing-rsvp{display:inline-flex;align-items:center;gap:18px;min-height:46px;padding:10px 20px;border:1px solid var(--closing-line);border-radius:30px;background:color-mix(in srgb,var(--closing-ground) 80%,transparent);color:var(--ink);text-decoration:none;font-size:14px;transition:background .25s,transform .25s}
-.closing-rsvp:hover{background:var(--closing-ground);transform:translateY(-2px)}
+.closing .closing-date{font-size:13px;letter-spacing:.18em;margin:0;text-transform:uppercase}
+.closing .closing-note{font-size:18px;line-height:1.5;margin:35px 0 40px}
+.closing-rsvp{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:50px;padding:12px 28px;border:1px solid var(--closing-line);border-radius:30px;background:var(--closing-line);color:var(--closing-ground);text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:opacity .25s,transform .25s;box-shadow:0 8px 25px #00000010}
+.closing-rsvp:hover{opacity:.9;transform:translateY(-2px)}
 .closing-rsvp:active{transform:translateY(0)}
 .closing .closing-caption{position:absolute;bottom:26px;left:25px;right:25px;margin:0;font-size:13px;font-style:italic;text-shadow:none}
 .closing-colophon{position:relative;padding:10px 25px 100px;background:var(--closing-ground);border-top:0}
