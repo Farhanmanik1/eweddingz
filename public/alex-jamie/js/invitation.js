@@ -9,7 +9,7 @@
     try { return new URL(asset(name), location.href).href; } catch { return asset(name); }
   };
   root.style.setProperty('--botanical', `url("${assetUrl('botanical.webp')}")`);
-  root.style.setProperty('--timeline-flower', `url("${assetUrl('timeline-flower.webp')}")`);
+  root.style.setProperty('--timeline-flower', `url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22%2392744e%22%3E%3Cpath%20d%3D%22M11.996%2011.235c-2.433-2.673-5.836-5.801-7.854-5.801-1.32%200-2.327.91-2.327%202.052%200%201.259%201.458%203.518%204.223%205.432-1.928.989-4.223%202.709-4.223%204.606%200%201.13.916%202.016%202.158%202.016%201.83%200%205.176-2.528%207.842-5.116%202.666%202.588%206.012%205.116%207.842%205.116%201.242%200%202.158-.886%202.158-2.016%200-1.897-2.295-3.617-4.223-4.606%202.765-1.914%204.223-4.173%204.223-5.432%200-1.142-1.007-2.052-2.327-2.052-2.018%200-5.421%203.128-7.854%205.801z%22%2F%3E%3C%2Fsvg%3E")`);
   document.body.classList.add(`theme-${data.theme}`, 'locked');
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const safeURL = value => { try { const u = new URL(value, location.href); return ['http:','https:','file:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } };
