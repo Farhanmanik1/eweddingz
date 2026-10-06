@@ -98,7 +98,7 @@
   }
   const notify = message => { $('status').textContent = message; $('status').hidden=false; clearTimeout(statusTimer); statusTimer=setTimeout(()=>$('status').hidden=true,4500); };
   const source = name => data.media[name] ? safeURL(data.media[name]) : '';
-  if (source('openingVideo')) { opening.src=source('openingVideo'); opening.poster=source('openingPoster') || asset('envelope-first.webp'); opening.preload='auto'; }
+  if (source('openingVideo')) { opening.src=source('openingVideo') + '#t=0.001'; opening.poster=source('openingPoster') || ''; opening.preload='auto'; }
   if (source('heroVideo')) { hero.src=source('heroVideo'); hero.poster=source('heroPoster') || asset('hero-first.webp'); }
   if (source('music')) { audio.src=source('music'); audio.volume=.45; }
   audio.addEventListener('error',()=>{ $('music').textContent='Play music'; $('music').setAttribute('aria-pressed','false'); if(opened) notify('Music could not be loaded. You can still enjoy the invitation.'); });
