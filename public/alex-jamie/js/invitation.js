@@ -58,11 +58,11 @@
           <img class="closing-art" src="${data.media.heroPoster ? text(safeURL(data.media.heroPoster)) : asset('hero-first.webp')}" alt="" width="720" height="1280" loading="lazy" decoding="async">
           <div class="closing-copy reveal" style="position: relative; z-index: 10;">
             <p class="closing-eyebrow">The beginning of our forever</p>
-            <h2 class="closing-title" id="closing-title">With all<br><em>our love</em></h2>
+            <h2 class="closing-title" id="closing-title">With all <em>our love</em></h2>
             <div class="closing-rule" aria-hidden="true"></div>
             <p class="closing-names"><span>${text(data.couple.first)}</span><i>&amp;</i><span>${text(data.couple.second)}</span></p>
             <p class="closing-date">${text(data.wedding.dateLabel)}</p>
-            <p class="closing-note">The day will be beautiful.<br>Even more so with you.</p>
+            <p class="closing-note">The day will be beautiful. Even more so with you.</p>
             <a class="closing-rsvp" href="#rsvp-title">Join our celebration <span aria-hidden="true">↗</span></a>
           </div>
           <p class="closing-caption">A little moment. A lifetime of love.</p>
