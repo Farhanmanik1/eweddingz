@@ -102,10 +102,10 @@ body{font-size:20px;line-height:1.65}.names{font-size:clamp(64px,15vw,88px);line
 .locked .media-controls{z-index:101}
 
 /* A distinct calligraphic signature for the couple, with space for flourishes. */
-.hero .names{font-family:"Imperial Script",Parisienne,cursive;font-size:clamp(76px,19vw,110px);font-weight:400;line-height:1.02;letter-spacing:0}
-.hero .names span{padding:0 .08em .07em}
-.hero .names i{font-family:"Cormorant Garamond",Georgia,serif;font-size:25px;line-height:1.1;margin:-3px 0 1px}
-@media(max-width:360px){.hero .names{font-size:76px}}
+.hero .names{font-family:"Imperial Script",Parisienne,cursive;font-size:clamp(60px,16vw,90px);font-weight:400;line-height:1.02;letter-spacing:0;text-align:center}
+.hero .names span{padding:0}
+.hero .names i{font-family:"Cormorant Garamond",Georgia,serif;font-size:25px;line-height:1.1;margin:-3px 0 1px;text-align:center}
+@media(max-width:360px){.hero .names{font-size:60px}}
 
 /* Hero supporting copy sits directly on the illustrated stationery. */
 .hero-copy .hero-note{margin:22px auto 0;max-width:240px;font-size:16px;line-height:1.5;text-shadow:0 1px 8px var(--paper),0 0 16px var(--paper)}
