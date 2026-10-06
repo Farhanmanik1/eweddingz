@@ -59,9 +59,9 @@ window.WEDDING_DATA = {
     "deadline": ""
   },
   "media": {
-    "openingVideo": "./media/opening.mp4",
+    "openingVideo": "./videointrodesign2.mp4",
     "openingPoster": "./media/opening-poster.webp",
-    "heroVideo": "./media/hero.mp4",
+    "heroVideo": "./videointrodesign2.mp4",
     "heroPoster": "./media/hero-poster.webp",
     "music": "./media/music.mp3",
     "musicTitle": "Heartwarming",
