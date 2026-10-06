@@ -19,17 +19,17 @@
   document.title = `${data.couple.first} & ${data.couple.second} | Dearly wedding invitation`;
   document.querySelector('#app').innerHTML = `
     <div class="entrance" id="entrance">
-      <img class="envelope" src="${data.media.openingPoster ? text(safeURL(data.media.openingPoster)) : asset('envelope-first.webp')}" alt="${text(theme.name)} floral embossed envelope with a wax seal" fetchpriority="high">
+      <img class="envelope" src="${data.media.openingPoster ? text(safeURL(data.media.openingPoster)) : asset('envelope-first.webp')}" alt="" fetchpriority="high" style="display: none;">
       <img class="envelope envelope-end" id="envelope-end" data-src="${asset('envelope-last.webp')}" alt="" hidden>
-      <button class="open-invitation" id="open" aria-label="Open the wedding invitation"><span class="open-caption">Open your invitation<small>${text(data.couple.first)} &amp; ${text(data.couple.second)}</small></span></button>
-      <video class="opening-video" id="opening-video" muted playsinline preload="none" hidden></video>
+      <button class="open-invitation" id="open" aria-label="Open the wedding invitation" style="z-index: 10;"><span class="open-caption">Open your invitation<small>${text(data.couple.first)} &amp; ${text(data.couple.second)}</small></span></button>
+      <video class="opening-video" id="opening-video" muted playsinline loop autoplay src="/alex-jamie/videointrodesign2.mp4" style="object-fit: cover; width: 100%; height: 100%; position: absolute; z-index: 0;"></video>
       <button class="skip-opening" id="skip" hidden>Skip opening</button>
     </div>
     <main class="invitation" id="invitation" inert>
       <section class="hero" aria-label="Wedding invitation">
-        <img class="hero-art" src="${data.media.heroPoster ? text(safeURL(data.media.heroPoster)) : asset('hero-first.webp')}" alt="${text(theme.scene)}" decoding="async">
-        <video class="hero-video" id="hero-video" muted loop playsinline preload="none" hidden></video>
-        <div class="hero-copy"><p class="occasion">The wedding of</p><p class="date">${text(data.wedding.dateLabel)}</p>
+        <img class="hero-art" src="${data.media.heroPoster ? text(safeURL(data.media.heroPoster)) : asset('hero-first.webp')}" alt="" decoding="async" style="display: none;">
+        <video class="hero-video" id="hero-video" muted loop autoplay playsinline preload="none" src="/alex-jamie/videointrodesign2.mp4" style="object-fit: cover; width: 100%; height: 100%; position: absolute; z-index: 0;"></video>
+        <div class="hero-copy" style="position: relative; z-index: 10;"><p class="occasion">The wedding of</p><p class="date">${text(data.wedding.dateLabel)}</p>
           <h1 class="names" id="names" tabindex="-1"><span>${text(data.couple.first)}</span><i>&amp;</i><span>${text(data.couple.second)}</span></h1>
           <p class="hero-note">${text(data.couple.heroNote)}</p><a class="hero-link" href="#our-invitation">With love, you are invited</a>
         </div>
@@ -53,10 +53,11 @@
           <form class="rsvp-form" id="rsvp-form"></form>
         </div>
       </section>
-      <footer class="closing" aria-labelledby="closing-title">
+      <footer class="closing" aria-labelledby="closing-title" style="position: relative; overflow: hidden;">
         <div class="closing-scene">
-          <img class="closing-art" src="${data.media.heroPoster ? text(safeURL(data.media.heroPoster)) : asset('hero-first.webp')}" alt="" width="720" height="1280" loading="lazy" decoding="async">
-          <div class="closing-copy reveal">
+          <img class="closing-art" src="${data.media.heroPoster ? text(safeURL(data.media.heroPoster)) : asset('hero-first.webp')}" alt="" width="720" height="1280" loading="lazy" decoding="async" style="display: none;">
+          <video class="closing-video" muted loop autoplay playsinline src="/alex-jamie/videointrodesign2.mp4" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 0;"></video>
+          <div class="closing-copy reveal" style="position: relative; z-index: 10;">
             <p class="closing-eyebrow">The beginning of our forever</p>
             <h2 class="closing-title" id="closing-title">With all<br><em>our love</em></h2>
             <div class="closing-rule" aria-hidden="true"></div>
