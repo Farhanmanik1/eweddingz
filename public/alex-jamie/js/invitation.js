@@ -55,8 +55,7 @@
       </section>
       <footer class="closing" aria-labelledby="closing-title" style="position: relative; overflow: hidden;">
         <div class="closing-scene">
-          <img class="closing-art" src="${data.media.heroPoster ? text(safeURL(data.media.heroPoster)) : asset('hero-first.webp')}" alt="" width="720" height="1280" loading="lazy" decoding="async" style="display: none;">
-          <video class="closing-video" muted loop autoplay playsinline src="/alex-jamie/heroautoplay.mp4?v=3" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 0;"></video>
+          <img class="closing-art" src="${data.media.heroPoster ? text(safeURL(data.media.heroPoster)) : asset('hero-first.webp')}" alt="" width="720" height="1280" loading="lazy" decoding="async">
           <div class="closing-copy reveal" style="position: relative; z-index: 10;">
             <p class="closing-eyebrow">The beginning of our forever</p>
             <h2 class="closing-title" id="closing-title">With all<br><em>our love</em></h2>
