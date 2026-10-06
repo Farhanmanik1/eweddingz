@@ -61,7 +61,7 @@ window.WEDDING_DATA = {
   "media": {
     "openingVideo": "/alex-jamie/videointrodesign2.mp4",
     "openingPoster": "",
-    "heroVideo": "/alex-jamie/videointrodesign2.mp4",
+    "heroVideo": "/alex-jamie/heroautoplay.mp4",
     "heroPoster": "",
     "music": "",
     "musicTitle": "",
