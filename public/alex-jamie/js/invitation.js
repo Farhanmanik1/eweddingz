@@ -163,7 +163,7 @@
         hero.currentTime = 0;
         hero.play().catch(() => {});
       }
-    }, 10000);
+    }, 5000);
   });
   hero.addEventListener('error',()=>{hero.hidden=true;});
   $('reopen').addEventListener('click',()=>{clearTimeout(fadeTimer);clearTimeout(openingTimer);clearTimeout(heroLoopTimer);window.scrollTo({top:0,behavior:'instant'});opened=false;ambience.setPaused(true);opening.pause();opening.currentTime=0;opening.hidden=true;hero.pause();hero.currentTime=0;$('entrance').hidden=false;$('entrance').classList.remove('leaving','opening');$('open').disabled=false;$('skip').hidden=true;$('invitation').inert=true;$('media-controls').hidden=true;document.body.classList.add('locked');$('open').focus();});
