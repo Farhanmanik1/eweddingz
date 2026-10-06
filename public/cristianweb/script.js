@@ -780,8 +780,8 @@
             const googleUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
                 '&text=' + encodeURIComponent('Akash & Selina — Holy Matrimony & Wedding Celebration') +
                 '&dates=20261202T043000Z/20261202T093000Z' +
-                '&details=' + encodeURIComponent('Holy Matrimony Service: Wednesday, 2nd December 2026, 10:00 AM - 3:00 PM at Bethel Chapel, Jatani, Khordha, Odisha (Map: https://maps.app.goo.gl/kcfwS2JydzcUm4aQ7).\\n\\nWedding Reception: Friday, 4th December 2026, 7:00 PM onwards at Reception Venue.\\n\\n"And now these three remain: faith, hope and love. But the greatest of these is love." — 1 Corinthians 13:13') +
-                '&location=' + encodeURIComponent('Bethel Chapel, Jatani, Khordha, Odisha');
+                '&details=' + encodeURIComponent('Holy Matrimony Service: Wednesday, 2nd December 2026, 10:00 AM - 3:00 PM at Bethel Chapel, Jatni, Khordha, Odisha (Map: https://maps.app.goo.gl/kcfwS2JydzcUm4aQ7).\\n\\nWedding Reception: Friday, 4th December 2026, 7:00 PM onwards at Reception Venue.\\n\\n"And now these three remain: faith, hope and love. But the greatest of these is love." — 1 Corinthians 13:13') +
+                '&location=' + encodeURIComponent('Bethel Chapel, Jatni, Khordha, Odisha');
             calGoogle.href = googleUrl;
             calGoogle.addEventListener('click', () => {
                 calMenu.classList.remove('show');
@@ -808,8 +808,8 @@
                     'DTSTART:20261202T043000Z',
                     'DTEND:20261202T093000Z',
                     'SUMMARY:Akash & Selina — Holy Matrimony & Wedding Celebration',
-                    'DESCRIPTION:Holy Matrimony Service: Wednesday, 2nd December 2026, 10:00 AM - 3:00 PM at Bethel Chapel, Jatani, Khordha, Odisha (Map: https://maps.app.goo.gl/kcfwS2JydzcUm4aQ7).\\nWedding Reception: Friday, 4th December 2026, 7:00 PM onwards at Reception Venue.\\n\\n"And now these three remain: faith, hope and love. But the greatest of these is love." — 1 Corinthians 13:13',
-                    'LOCATION:Bethel Chapel\\, Jatani\\, Khordha\\, Odisha',
+                    'DESCRIPTION:Holy Matrimony Service: Wednesday, 2nd December 2026, 10:00 AM - 3:00 PM at Bethel Chapel, Jatni, Khordha, Odisha (Map: https://maps.app.goo.gl/kcfwS2JydzcUm4aQ7).\\nWedding Reception: Friday, 4th December 2026, 7:00 PM onwards at Reception Venue.\\n\\n"And now these three remain: faith, hope and love. But the greatest of these is love." — 1 Corinthians 13:13',
+                    'LOCATION:Bethel Chapel\\, Jatni\\, Khordha\\, Odisha',
                     'STATUS:CONFIRMED',
                     'END:VEVENT',
                     'END:VCALENDAR'
@@ -833,7 +833,7 @@
                 calMenu.classList.remove('show');
                 calBtn.classList.remove('menu-open');
 
-                const text = 'Akash & Selina — Holy Matrimony & Wedding Celebration\n\n💍 Holy Matrimony Service:\nWednesday, 2nd December 2026 | 10:00 AM – 3:00 PM\nVenue: Bethel Chapel, Jatani, Khordha, Odisha\nMap: https://maps.app.goo.gl/kcfwS2JydzcUm4aQ7\n\n🥂 Wedding Reception:\nFriday, 4th December 2026 | 7:00 PM Onwards\nVenue: Reception Venue, Khordha / Bhubaneswar, Odisha\n\n"And now these three remain: faith, hope and love. But the greatest of these is love." — 1 Corinthians 13:13';
+                const text = 'Akash & Selina — Holy Matrimony & Wedding Celebration\n\n💍 Holy Matrimony Service:\nWednesday, 2nd December 2026 | 10:00 AM – 3:00 PM\nVenue: Bethel Chapel, Jatni, Khordha, Odisha\nMap: https://maps.app.goo.gl/kcfwS2JydzcUm4aQ7\n\n🥂 Wedding Reception:\nFriday, 4th December 2026 | 7:00 PM Onwards\nVenue: Reception Venue, Khordha / Bhubaneswar, Odisha\n\n"And now these three remain: faith, hope and love. But the greatest of these is love." — 1 Corinthians 13:13';
                 if (navigator.clipboard && navigator.clipboard.writeText) {
                     navigator.clipboard.writeText(text).then(() => {
                         showToast('Wedding details copied to clipboard!', '📋');
