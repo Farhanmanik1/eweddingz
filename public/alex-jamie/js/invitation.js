@@ -44,15 +44,7 @@
       <section class="paper-section floral schedule-section" aria-labelledby="schedule-title"><h2 class="script reveal" id="schedule-title">Every lovely moment</h2><ol class="timeline">${data.schedule.map(event=>`<li class="reveal"><time>${text(event.time)}</time><span class="event-marker" aria-hidden="true"></span><span class="event-name">${text(event.title)}</span></li>`).join('')}</ol><p class="schedule-note">${text(data.wedding.scheduleNote)}</p></section>
       <section class="paper-section venue-section torn" aria-labelledby="venue-title"><h2 class="script reveal" id="venue-title">Where we celebrate</h2><img class="venue-scene reveal" src="/alex-jamie/images/venue-placeholder.jpg" alt="Our Wedding Venue" loading="lazy"><p class="venue-caption">${text(data.venue.sceneCaption)}</p><div class="location-frame reveal"><h3 class="venue-name">${text(data.venue.name)}</h3><div class="rule" aria-hidden="true"></div><address class="venue-address">${text(data.venue.address)}</address><p>${text(data.venue.timeLabel)}</p><div class="actions"><a class="action" id="maps" href="https://maps.google.com/maps?q=${encodeURIComponent(data.venue.address)}" target="_blank" rel="noopener noreferrer">Open in maps</a><button class="action secondary" id="calendar">Add to calendar</button></div></div><p class="travel-note">${text(data.venue.note)}</p></section>
       <section class="paper-section floral etiquette" aria-label="Guest details"><article class="reveal"><h2 class="script">Dress code</h2><p>${text(data.details.dressCode)}</p></article><div class="rule" aria-hidden="true"></div><article class="reveal"><h2 class="script">Your presence, our present</h2><p>${text(data.details.giftPreference)}</p></article></section>
-      <section class="paper-section floral rsvp-section" aria-labelledby="rsvp-title">
-        <div class="rsvp-card reveal"><span class="rsvp-kicker">Kindly reply</span>
-          <svg class="rsvp-envelope" viewBox="0 0 48 36" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="2" y="3" width="44" height="30" rx="2"/><path d="m3 5 21 16L45 5M3 32l14-14m28 14L31 18"/></svg>
-          <h2 class="script" id="rsvp-title">${text(data.rsvp?.heading || 'A place for you')}</h2>
-          <p>${text(data.rsvp?.note || 'We would love to celebrate with you. Kindly let us know if you can join us.')}</p>
-          ${data.rsvp?.deadline ? `<p class="rsvp-deadline">Kindly reply by ${text(data.rsvp.deadline)}</p>` : ''}
-          <form class="rsvp-form" id="rsvp-form"></form>
-        </div>
-      </section>
+
       <footer class="closing" aria-labelledby="closing-title" style="position: relative; overflow: hidden;">
         <div class="closing-scene">
           <img class="closing-art" src="${data.media.heroPoster ? text(safeURL(data.media.heroPoster)) : asset('hero-first.webp')}" alt="" width="720" height="1280" loading="lazy" decoding="async">
@@ -63,7 +55,7 @@
             <p class="closing-names"><span>${text(data.couple.first)}</span><i>&amp;</i><span>${text(data.couple.second)}</span></p>
             <p class="closing-date">${text(data.wedding.dateLabel)}</p>
             <p class="closing-note">The day will be beautiful. Even more so with you.</p>
-            <a class="closing-rsvp" href="#rsvp-title">Join our celebration <span aria-hidden="true">↗</span></a>
+
           </div>
           <p class="closing-caption">A little moment. A lifetime of love.</p>
         </div>
@@ -110,7 +102,7 @@
   $('maps').hidden = !mapsURL && !data.venue.address.trim();
   $('maps').href=mapsURL || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(data.venue.name+' '+data.venue.address)}`;
 
-  window.initWeddingRSVP($('rsvp-form'), data.rsvp || {}, `${data.couple.first} & ${data.couple.second}`);
+
 
   function beginObservers() {
     if(observersStarted || !('IntersectionObserver' in window)) return;
