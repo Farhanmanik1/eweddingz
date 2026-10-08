@@ -1135,6 +1135,25 @@ export default function Home() {
                     clientName: "Akash & Selina",
                     deliverables: ["Custom Domain Web Link (eweddingz.online)", "Catholic Theme", "RSVP Form"],
                     whatsappMessage: "Hi eWeddingz! I love the Akash & Selina Catholic theme (₹999). Can you share details for our wedding?"
+                  },
+                  {
+                    id: "p10",
+                    category: "website" as const,
+                    badge: "MUSLIM NIKAH · LIVE DEMO",
+                    price: "₹999",
+                    couple: "Farhan & Muskan",
+                    tradition: "✦ Muslim Wedding",
+                    venue: "TBD",
+                    date: "Dec 9, 2028",
+                    mockupType: "browser" as const,
+                    urlPreview: "eweddingz.online/farhan-muskan",
+                    liveDemoUrl: "/farhan-muskan",
+                    image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200",
+                    tags: ["Muslim Nikah", "Elegant Design", "Floral Theme"],
+                    quote: "A beautifully designed Nikah invitation for our special day.",
+                    clientName: "Farhan & Muskan",
+                    deliverables: ["Custom Domain Web Link (eweddingz.online)", "Nikah Theme", "Animated Envelope"],
+                    whatsappMessage: "Hi eWeddingz! I love the Farhan & Muskan Nikah theme (₹999). Can you share details for our wedding?"
                   }
                 ];
 
