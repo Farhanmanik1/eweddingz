@@ -1,71 +1,63 @@
 /**
- * Arnab & Aishwarya Royal Wedding Website
- * A Celestial Union of Bengal & Rajasthan
+ * Arnab & Aishwarya Royal Wedding Celebration
+ * A Masterpiece Union of Bengal & Rajasthan
  */
 
 (() => {
   'use strict';
 
-  // DOM Elements
+  // Core DOM Elements
   const entrancePortal = document.getElementById('entrance-portal');
   const portalVideo = document.getElementById('portal-video');
-  const portalTeaser = document.getElementById('portal-teaser');
-  const btnOpen = document.getElementById('btn-open-royal');
-  const btnSkip = document.getElementById('btn-skip-intro');
+  const portalGateOverlay = document.getElementById('portal-gate-overlay');
+  const btnOpenGate = document.getElementById('btn-open-gate');
+  const btnSkipPortal = document.getElementById('btn-skip-portal');
   const heroVideo = document.getElementById('hero-video');
-  const btnReplay = document.getElementById('btn-replay-portal');
-  const btnMuteToggle = document.getElementById('btn-mute-toggle');
-  const soundIcon = document.getElementById('sound-icon');
+  const royalNav = document.getElementById('royal-nav');
+  const btnReplayPortal = document.getElementById('btn-replay-portal');
+  const btnNavAudio = document.getElementById('btn-nav-audio');
+  const btnFloatingAudio = document.getElementById('btn-floating-audio');
+  const audioStatusText = document.getElementById('audio-status-text');
 
   let heroLoopTimer = null;
   let isMuted = false;
   let entranceFinished = false;
 
-  // Initialize videos
-  if (portalVideo) {
-    portalVideo.preload = 'auto';
-  }
-  if (heroVideo) {
-    heroVideo.preload = 'auto';
-  }
-
-  // 1. OPEN ROYAL INVITATION (PLAY PART 1 INTRO)
-  async function startRoyalEntrance() {
-    portalTeaser.classList.add('hidden');
-    btnSkip.style.display = 'block';
+  // 1. OPEN ROYAL GATE & PLAY INTRO VIDEO (PART 1)
+  async function openRoyalGate() {
+    portalGateOverlay.classList.add('hidden');
+    btnSkipPortal.style.display = 'block';
 
     try {
       portalVideo.muted = isMuted;
       await portalVideo.play();
     } catch (err) {
-      console.warn('Autoplay with sound prevented, playing muted:', err);
+      console.warn('Playback with audio prevented by browser, playing muted:', err);
       portalVideo.muted = true;
       isMuted = true;
-      updateMuteIcon();
+      syncAudioState();
       portalVideo.play().catch(() => finishEntrance());
     }
   }
 
-  // 2. FINISH ENTRANCE & TRANSITION TO HERO (PART 2)
+  // 2. FINISH ENTRANCE & TRANSITION TO LIVING HERO (PART 2)
   function finishEntrance() {
     if (entranceFinished) return;
     entranceFinished = true;
 
-    // Smoothly fade out entrance overlay
     entrancePortal.classList.add('fade-out');
     document.body.classList.remove('locked');
 
-    // Pause portal video after fade
     setTimeout(() => {
       portalVideo.pause();
-    }, 1000);
+    }, 1200);
 
-    // Play Hero Video (part2.mp4)
+    // Start Hero Video (part2.mp4)
     if (heroVideo) {
       heroVideo.muted = isMuted;
       heroVideo.currentTime = 0;
       heroVideo.play().catch((err) => {
-        console.warn('Hero video autoplay muted fallback:', err);
+        console.warn('Hero video muted fallback:', err);
         heroVideo.muted = true;
         heroVideo.play().catch(() => {});
       });
@@ -82,25 +74,21 @@
           heroVideo.currentTime = 0;
           heroVideo.play().catch(() => {});
         }
-      }, 5000); // 5-second pause between loops as requested
+      }, 5000); // 5 seconds interval loop
     });
   }
 
-  // Event Listeners for Portal
-  if (btnOpen) {
-    btnOpen.addEventListener('click', startRoyalEntrance);
+  if (btnOpenGate) {
+    btnOpenGate.addEventListener('click', openRoyalGate);
   }
 
-  if (btnSkip) {
-    btnSkip.addEventListener('click', finishEntrance);
+  if (btnSkipPortal) {
+    btnSkipPortal.addEventListener('click', finishEntrance);
   }
 
   if (portalVideo) {
     portalVideo.addEventListener('ended', finishEntrance);
-    portalVideo.addEventListener('error', () => {
-      finishEntrance();
-    });
-    // Fallback if video ends near duration
+    portalVideo.addEventListener('error', finishEntrance);
     portalVideo.addEventListener('timeupdate', () => {
       if (portalVideo.duration && portalVideo.currentTime >= portalVideo.duration - 0.5) {
         finishEntrance();
@@ -108,82 +96,100 @@
     });
   }
 
-  // 4. REPLAY ROYAL PORTAL FEATURE
-  if (btnReplay) {
-    btnReplay.addEventListener('click', () => {
+  // 4. REPLAY ROYAL GATE
+  if (btnReplayPortal) {
+    btnReplayPortal.addEventListener('click', () => {
       clearTimeout(heroLoopTimer);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       entranceFinished = false;
       document.body.classList.add('locked');
 
-      if (heroVideo) {
-        heroVideo.pause();
-      }
+      if (heroVideo) heroVideo.pause();
 
       portalVideo.currentTime = 0;
-      portalTeaser.classList.remove('hidden');
-      btnSkip.style.display = 'none';
+      portalGateOverlay.classList.remove('hidden');
+      btnSkipPortal.style.display = 'none';
       entrancePortal.classList.remove('fade-out');
     });
   }
 
-  // 5. AUDIO / MUTE CONTROLS
-  function updateMuteIcon() {
-    if (!soundIcon) return;
-    soundIcon.textContent = isMuted ? '🔇' : '🔊';
+  // 5. AUDIO CONTROLS
+  function syncAudioState() {
+    if (btnNavAudio) {
+      if (isMuted) {
+        btnNavAudio.classList.add('audio-muted');
+        if (audioStatusText) audioStatusText.textContent = 'Muted';
+      } else {
+        btnNavAudio.classList.remove('audio-muted');
+        if (audioStatusText) audioStatusText.textContent = 'Music On';
+      }
+    }
+    const floatingIcon = document.getElementById('floating-audio-icon');
+    if (floatingIcon) {
+      floatingIcon.textContent = isMuted ? '🔇' : '🎵';
+    }
   }
 
-  if (btnMuteToggle) {
-    btnMuteToggle.addEventListener('click', () => {
-      isMuted = !isMuted;
-      if (portalVideo) portalVideo.muted = isMuted;
-      if (heroVideo) heroVideo.muted = isMuted;
-      updateMuteIcon();
-    });
+  function toggleAudio() {
+    isMuted = !isMuted;
+    if (portalVideo) portalVideo.muted = isMuted;
+    if (heroVideo) heroVideo.muted = isMuted;
+    syncAudioState();
   }
 
-  // 6. AUSPICIOUS MUHURAT COUNTDOWN TIMER
-  // Target: 8th December 2026, 10:30:00 AM IST
-  const weddingDate = new Date('2026-12-08T10:30:00+05:30').getTime();
+  if (btnNavAudio) btnNavAudio.addEventListener('click', toggleAudio);
+  if (btnFloatingAudio) btnFloatingAudio.addEventListener('click', toggleAudio);
+
+  // 6. STICKY NAVBAR SCROLL TRIGGER
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      royalNav.classList.add('scrolled');
+    } else {
+      royalNav.classList.remove('scrolled');
+    }
+  });
+
+  // 7. REAL-TIME COUNTDOWN TIMER (8 Dec 2026, 10:30 AM IST)
+  const targetDate = new Date('2026-12-08T10:30:00+05:30').getTime();
 
   function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = weddingDate - now;
+    const now = Date.now();
+    const diff = targetDate - now;
 
-    if (distance <= 0) {
-      document.getElementById('days').textContent = '00';
-      document.getElementById('hours').textContent = '00';
-      document.getElementById('minutes').textContent = '00';
-      document.getElementById('seconds').textContent = '00';
+    if (diff <= 0) {
+      ['cd-days', 'cd-hours', 'cd-minutes', 'cd-seconds'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = '00';
+      });
       return;
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-    const pad = (num) => String(num).padStart(2, '0');
+    const pad = n => String(n).padStart(2, '0');
 
-    const elDays = document.getElementById('days');
-    const elHours = document.getElementById('hours');
-    const elMins = document.getElementById('minutes');
-    const elSecs = document.getElementById('seconds');
+    const elD = document.getElementById('cd-days');
+    const elH = document.getElementById('cd-hours');
+    const elM = document.getElementById('cd-minutes');
+    const elS = document.getElementById('cd-seconds');
 
-    if (elDays) elDays.textContent = pad(days);
-    if (elHours) elHours.textContent = pad(hours);
-    if (elMins) elMins.textContent = pad(minutes);
-    if (elSecs) elSecs.textContent = pad(seconds);
+    if (elD) elD.textContent = pad(d);
+    if (elH) elH.textContent = pad(h);
+    if (elM) elM.textContent = pad(m);
+    if (elS) elS.textContent = pad(s);
   }
 
   setInterval(updateCountdown, 1000);
   updateCountdown();
 
-  // 7. ITINERARY TAB SWITCHER
-  const tabDay1 = document.getElementById('tab-day-1');
-  const tabDay2 = document.getElementById('tab-day-2');
-  const timelineDay1 = document.getElementById('timeline-day-1');
-  const timelineDay2 = document.getElementById('timeline-day-2');
+  // 8. ITINERARY TABS SWITCHER (Day 1 / Day 2)
+  const tabDay1 = document.getElementById('day-tab-1');
+  const tabDay2 = document.getElementById('day-tab-2');
+  const timelineDay1 = document.getElementById('day-timeline-1');
+  const timelineDay2 = document.getElementById('day-timeline-2');
 
   if (tabDay1 && tabDay2) {
     tabDay1.addEventListener('click', () => {
@@ -201,40 +207,30 @@
     });
   }
 
-  // 8. ADD TO CALENDAR (.ICS GENERATION)
-  const btnCalendar = document.getElementById('btn-add-calendar');
+  // 9. ADD TO CALENDAR (.ICS FILE)
+  const btnCalendar = document.getElementById('btn-calendar-download');
   if (btnCalendar) {
     btnCalendar.addEventListener('click', () => {
-      const icsContent = [
+      const icsData = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
-        'PRODID:-//eWeddingz//Arnab & Aishwarya Wedding//EN',
+        'PRODID:-//eWeddingz//Arnab and Aishwarya Wedding//EN',
         'CALSCALE:GREGORIAN',
         'METHOD:PUBLISH',
-        // Day 1
         'BEGIN:VEVENT',
-        'UID:arnab-aishwarya-day1-20261208@eweddingz.online',
+        'UID:arnab-aishwarya-20261208@eweddingz.online',
         'DTSTAMP:20261009T100000Z',
-        'DTSTART:20261208T050000Z', // 10:30 AM IST is 05:00 UTC
-        'DTEND:20261208T163000Z',   // 10:00 PM IST is 16:30 UTC
-        'SUMMARY:Arnab & Aishwarya Wedding - Haldi, Mehendi & Sangeet',
+        'DTSTART:20261208T050000Z', // 10:30 AM IST
+        'DTEND:20261209T133000Z',   // 7:00 PM IST next day
+        'SUMMARY:Arnab & Aishwarya Royal Vivah (Rajasthan)',
         'LOCATION:Anantgarh Resort, Rajasthan',
-        'DESCRIPTION:Celebration of Arnab Karmakar & Aishwarya Negi. Haldi & Mehendi (10:30am), Lunch (1:30pm), Sagai & Sangeet (6:00pm), Dinner (7:30pm).',
-        'END:VEVENT',
-        // Day 2
-        'BEGIN:VEVENT',
-        'UID:arnab-aishwarya-day2-20261209@eweddingz.online',
-        'DTSTAMP:20261009T100000Z',
-        'DTSTART:20261209T043000Z', // 10:00 AM IST is 04:30 UTC
-        'DTEND:20261209T133000Z',   // 7:00 PM IST is 13:30 UTC
-        'SUMMARY:Arnab & Aishwarya Royal Vivah - Baraat, Phere & Big Feast',
-        'LOCATION:Anantgarh Resort, Rajasthan',
-        'DESCRIPTION:Baraat (10am), Phere (11:30am), Big Feast (1:30pm), Vidai (5pm). Venue: Anantgarh Resort.',
+        'DESCRIPTION:Celebration of Arnab Karmakar & Aishwarya Negi at Anantgarh Resort. Haldi, Mehendi, Sangeet on 8th Dec & Baraat, Phere, Royal Feast, Vidai on 9th Dec.',
+        'URL:https://maps.app.goo.gl/jBfqTfXgRUDQVKC66',
         'END:VEVENT',
         'END:VCALENDAR'
       ].join('\r\n');
 
-      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
       link.download = 'Arnab-Aishwarya-Royal-Wedding.ics';
@@ -245,44 +241,112 @@
     });
   }
 
-  // 9. RSVP FORM SUBMISSION
-  const rsvpForm = document.getElementById('rsvp-form');
-  const rsvpStatus = document.getElementById('rsvp-status');
+  // 10. RSVP WHATSAPP FORM
+  const rsvpForm = document.getElementById('royal-rsvp-form');
+  const rsvpAlert = document.getElementById('rsvp-alert-box');
 
   if (rsvpForm) {
     rsvpForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const name = document.getElementById('guest-name').value.trim();
-      const guests = document.getElementById('guest-count').value;
-      const attendance = document.getElementById('guest-attendance').value;
-      const side = document.getElementById('guest-side').value;
-      const message = document.getElementById('guest-message').value.trim();
+      const name = document.getElementById('rsvp-name').value.trim();
+      const count = document.getElementById('rsvp-count').value;
+      const days = document.getElementById('rsvp-days').value;
+      const side = document.getElementById('rsvp-side').value;
+      const message = document.getElementById('rsvp-message').value.trim();
 
       if (!name) return;
 
-      // Construct friendly WhatsApp greeting
       const waText = encodeURIComponent(
-        `✦ *Royal Wedding RSVP - Arnab & Aishwarya* ✦\n\n` +
+        `✦ *ROYAL WEDDING RSVP — ARNAB & AISHWARYA* ✦\n\n` +
         `👤 *Guest Name:* ${name}\n` +
-        `👥 *Number of Guests:* ${guests}\n` +
-        `📅 *Attending:* ${attendance}\n` +
-        `🪷 *Family Side:* ${side}\n` +
-        (message ? `💌 *Wishes:* "${message}"\n\n` : `\n`) +
-        `Looking forward to celebrating at Anantgarh Resort! ✨`
+        `👥 *Attending Count:* ${count}\n` +
+        `📅 *Ceremonies:* ${days}\n` +
+        `🪷 *Family Association:* ${side}\n` +
+        (message ? `💌 *Wishes for Couple:* "${message}"\n\n` : `\n`) +
+        `Eagerly looking forward to blessing the couple at Anantgarh Resort! ✨`
       );
 
-      // Open WhatsApp or display confirmation
-      const waUrl = `https://api.whatsapp.com/send?text=${waText}`;
-      window.open(waUrl, '_blank');
+      window.open(`https://api.whatsapp.com/send?text=${waText}`, '_blank');
 
-      if (rsvpStatus) {
-        rsvpStatus.textContent = `Thank you, ${name}! Your RSVP has been noted. We look forward to welcoming you at Anantgarh Resort!`;
-        rsvpStatus.classList.add('success');
+      if (rsvpAlert) {
+        rsvpAlert.textContent = `Thank you, ${name}! Your RSVP has been confirmed. We eagerly await your arrival at Anantgarh Resort!`;
+        rsvpAlert.classList.add('active');
       }
 
       rsvpForm.reset();
     });
+  }
+
+  // 11. FLOATING ROSE PETALS & GOLDEN PARTICLES CANVAS
+  const canvas = document.getElementById('particles-canvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    const particleCount = 28;
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 4 + 2,
+        speedY: Math.random() * 1.2 + 0.6,
+        speedX: Math.sin(Math.random() * Math.PI) * 0.8,
+        angle: Math.random() * Math.PI * 2,
+        spin: (Math.random() - 0.5) * 0.03,
+        opacity: Math.random() * 0.6 + 0.3,
+        isPetal: Math.random() > 0.4
+      });
+    }
+
+    function renderParticles() {
+      ctx.clearRect(0, 0, width, height);
+
+      particles.forEach(p => {
+        p.y += p.speedY;
+        p.x += Math.sin(p.angle) * 0.6 + p.speedX;
+        p.angle += p.spin;
+
+        if (p.y > height + 20) {
+          p.y = -20;
+          p.x = Math.random() * width;
+        }
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.angle);
+
+        if (p.isPetal) {
+          // Rose Petal
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.r * 1.8, p.r, 0, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(180, 30, 48, ${p.opacity * 0.7})`;
+          ctx.fill();
+        } else {
+          // Golden Sparkle
+          ctx.beginPath();
+          ctx.arc(0, 0, p.r * 0.8, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(247, 231, 180, ${p.opacity})`;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = 'rgba(212, 175, 55, 0.8)';
+          ctx.fill();
+        }
+
+        ctx.restore();
+      });
+
+      requestAnimationFrame(renderParticles);
+    }
+
+    renderParticles();
   }
 
 })();
