@@ -22,6 +22,10 @@ const nextConfig: NextConfig = {
       {
         source: '/cristianweb',
         destination: '/cristianweb/index.html',
+      },
+      {
+        source: '/arnab-aishwarya',
+        destination: '/arnab-aishwarya/index.html',
       }
     ];
   },

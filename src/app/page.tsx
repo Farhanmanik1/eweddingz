@@ -1154,6 +1154,25 @@ export default function Home() {
                     clientName: "Farhan & Muskan",
                     deliverables: ["Custom Domain Web Link (eweddingz.online)", "Nikah Theme", "Animated Envelope"],
                     whatsappMessage: "Hi eWeddingz! I love the Farhan & Muskan Nikah theme (₹999). Can you share details for our wedding?"
+                  },
+                  {
+                    id: "p11",
+                    category: "website" as const,
+                    badge: "ROYAL RAJASTHANI & BENGALI VIVAH · LIVE DEMO",
+                    price: "₹999",
+                    couple: "Arnab & Aishwarya",
+                    tradition: "🪷 Bengal & Rajasthan Union",
+                    venue: "Anantgarh Resort, Rajasthan",
+                    date: "Dec 8 & 9, 2026",
+                    mockupType: "browser" as const,
+                    urlPreview: "eweddingz.online/arnab-aishwarya",
+                    liveDemoUrl: "/arnab-aishwarya",
+                    image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=1200",
+                    tags: ["Video Intro & Loop", "Bengal + Rajasthan", "Royal Palace Gates"],
+                    quote: "The royal palace doors opening to the moonlit courtyard with our parents' blessings was beyond our dreams. Every guest was mesmerized!",
+                    clientName: "Arnab & Aishwarya (Rajasthan)",
+                    deliverables: ["Custom Domain Web Link (eweddingz.online)", "Cinematic 2-Part Video Intro & Loop", "2-Day Ceremony Itinerary", "WhatsApp RSVP & Maps"],
+                    whatsappMessage: "Hi eWeddingz! I love the Arnab & Aishwarya Royal Vivah theme (₹999). Can you share details for our wedding?"
                   }
                 ];
 

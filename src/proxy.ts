@@ -18,6 +18,16 @@ export function proxy(request: NextRequest) {
       return NextResponse.rewrite(new URL(`/cristianweb${url.pathname}`, request.url));
     }
   }
+
+  // Handle subdomain routing for Arnab & Aishwarya
+  if (hostname === 'arnab-aishwarya.eweddingz.online') {
+    if (url.pathname === '/') {
+      return NextResponse.rewrite(new URL('/arnab-aishwarya/index.html', request.url));
+    }
+    if (!url.pathname.startsWith('/arnab-aishwarya')) {
+      return NextResponse.rewrite(new URL(`/arnab-aishwarya${url.pathname}`, request.url));
+    }
+  }
   
   return NextResponse.next();
 }
